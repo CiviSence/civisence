@@ -5,7 +5,7 @@ import Logo from './Logo';
 
 const Hero = () => {
   return (
-    <div id="home" className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+    <div id="home" className="relative pt-30 pb-20 lg:pt-30 lg:pb-32 overflow-hidden bg-linear-to-b from-gray-50 to-white">
       {/* Background decoration */}
       <div className="absolute top-0 -left-1/4 w-1/2 h-1/2 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 -right-1/4 w-1/2 h-1/2 bg-secondary/5 rounded-full blur-3xl" />
@@ -57,7 +57,7 @@ const Hero = () => {
           >
             <div className="relative w-full aspect-square flex items-center justify-center">
               {/* Abstract Platform base */}
-              <div className="absolute bottom-10 w-3/4 h-16 bg-gradient-to-r from-gray-100 to-gray-200 rounded-[100%] blur-sm border-b border-gray-300"></div>
+              <div className="absolute bottom-10 w-3/4 h-16 bg-linear-to-r from-gray-100 to-gray-200 rounded-[100%] blur-sm border-b border-gray-300"></div>
               <div className="absolute bottom-14 w-2/3 h-12 bg-white rounded-[100%] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100"></div>
               
               {/* Giant floating logo */}

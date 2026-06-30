@@ -1,66 +1,128 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Star, Quote } from 'lucide-react';
+
+const testimonials = [
+  {
+    name: 'Priya Sharma',
+    role: 'Student, Delhi University',
+    quote:
+      'I joined my college on CiviSence and reported a broken water cooler. It was fixed within 2 days! The tracking feature kept me updated every step of the way.',
+    avatar: 'https://i.pravatar.cc/150?img=5',
+  },
+  {
+    name: 'Rajesh Patel',
+    role: 'President, Green Valley Society',
+    quote:
+      'Registering our residential society was seamless. Now all 200+ residents report issues through CiviSence and our maintenance team resolves them efficiently.',
+    avatar: 'https://i.pravatar.cc/150?img=11',
+  },
+  {
+    name: 'Ananya Gupta',
+    role: 'Campus Admin, IIT Patna',
+    quote:
+      'As an admin, I can verify reports and assign them to the right staff instantly. The analytics dashboard helps me track our team performance beautifully.',
+    avatar: 'https://i.pravatar.cc/150?img=9',
+  },
+  {
+    name: 'Vikram Singh',
+    role: 'Maintenance Staff, Metro Housing',
+    quote:
+      'I receive clear assignments with photos and locations. Updating progress and uploading proof of resolution is incredibly simple.',
+    avatar: 'https://i.pravatar.cc/150?img=12',
+  },
+];
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: 'easeOut' },
+  },
+};
 
 const Testimonials = () => {
-  const testimonials = [
-    {
-      name: "Sarah Jenkins",
-      role: "University Student",
-      quote: "Reporting campus maintenance issues used to take days. With CiviSence, I take a photo, upload it, and get notified when it's fixed. It's incredibly efficient.",
-      avatar: "https://i.pravatar.cc/150?img=1"
-    },
-    {
-      name: "Rajesh Kumar",
-      role: "Society Administrator",
-      quote: "Managing our residential society's complaints is now a breeze. I can assign tasks to the right staff instantly and track their progress from my dashboard.",
-      avatar: "https://i.pravatar.cc/150?img=11"
-    },
-    {
-      name: "Priya Sharma",
-      role: "Municipal Officer",
-      quote: "The analytics feature helps us identify recurring issues in specific areas, allowing us to allocate resources better. A game changer for civic management.",
-      avatar: "https://i.pravatar.cc/150?img=5"
-    }
-  ];
-
   return (
-    <section className="py-24 bg-white">
+    <section className="bg-white py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-primary font-semibold tracking-wide uppercase text-sm mb-3">Testimonials</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
-            Trusted by communities
-          </h3>
-        </div>
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6">
+            <Quote className="w-4 h-4" />
+            Testimonials
+          </span>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight">
+            Loved by Communities
+          </h2>
+          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            Hear from the people who use CiviSence every day to make their
+            communities better.
+          </p>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((t, idx) => (
-            <motion.div 
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="bg-gray-50 rounded-3xl p-8 border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+        {/* Testimonial grid */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {testimonials.map((t) => (
+            <motion.div
+              key={t.name}
+              className="bg-gray-50 rounded-3xl border border-gray-100 p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow duration-300"
+              variants={cardVariants}
             >
-              <div className="flex text-yellow-400 mb-6">
-                {[1,2,3,4,5].map(star => (
-                  <svg key={star} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
+              {/* Stars */}
+              <div className="flex gap-1 mb-5">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                  />
                 ))}
               </div>
-              <p className="text-gray-700 mb-8 italic">"{t.quote}"</p>
+
+              {/* Quote */}
+              <p className="text-gray-700 italic leading-relaxed text-[15px] mb-8 flex-1">
+                &ldquo;{t.quote}&rdquo;
+              </p>
+
+              {/* Author */}
               <div className="flex items-center gap-4">
-                <img src={t.avatar} alt={t.name} className="w-12 h-12 rounded-full ring-2 ring-primary/20" />
+                <img
+                  src={t.avatar}
+                  alt={t.name}
+                  className="w-12 h-12 rounded-full object-cover ring-2 ring-primary/20"
+                  loading="lazy"
+                />
                 <div>
-                  <h4 className="font-bold text-gray-900">{t.name}</h4>
-                  <p className="text-sm text-gray-500">{t.role}</p>
+                  <p className="font-semibold text-gray-900 text-sm">
+                    {t.name}
+                  </p>
+                  <p className="text-gray-500 text-xs">{t.role}</p>
                 </div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,86 +1,194 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Smartphone, MapPin, Bell, MessageCircle, BarChart3, Users, Settings, ClipboardList, Camera, CheckCircle2 } from 'lucide-react';
+import { UserCircle, Shield, Wrench, Check } from 'lucide-react';
+
+const roles = [
+  {
+    title: 'Citizen / User',
+    icon: UserCircle,
+    accent: 'blue',
+    headerBg: 'bg-blue-50',
+    borderColor: 'border-t-blue-500',
+    iconBg: 'bg-blue-100',
+    iconColor: 'text-blue-600',
+    checkColor: 'text-blue-500',
+    badgeBg: 'bg-blue-100',
+    badgeText: 'text-blue-700',
+    features: [
+      'Report global & org issues',
+      'Join multiple organizations',
+      'Track issue progress in real-time',
+      'Verify resolutions & give feedback',
+      'Receive status notifications',
+    ],
+  },
+  {
+    title: 'Admin',
+    icon: Shield,
+    accent: 'primary',
+    headerBg: 'bg-primary/10',
+    borderColor: 'border-t-primary',
+    iconBg: 'bg-primary/15',
+    iconColor: 'text-primary',
+    checkColor: 'text-primary',
+    badgeBg: 'bg-primary/10',
+    badgeText: 'text-primary-dark',
+    features: [
+      'Verify & validate reported issues',
+      'Assign issues to appropriate staff',
+      'Manage organization members',
+      'View analytics & performance metrics',
+      'Configure organization settings',
+    ],
+  },
+  {
+    title: 'Staff',
+    icon: Wrench,
+    accent: 'emerald',
+    headerBg: 'bg-emerald-50',
+    borderColor: 'border-t-emerald-500',
+    iconBg: 'bg-emerald-100',
+    iconColor: 'text-emerald-600',
+    checkColor: 'text-emerald-500',
+    badgeBg: 'bg-emerald-100',
+    badgeText: 'text-emerald-700',
+    features: [
+      'Receive issue assignments',
+      'Update progress with status notes',
+      'Upload resolution proof (photos)',
+      'Mark issues as resolved',
+      'View personal task dashboard',
+    ],
+  },
+];
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
+};
+
+const featureItemVariants = {
+  hidden: { opacity: 0, x: -10 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.3 },
+  },
+};
 
 const Features = () => {
-  const citizenFeatures = [
-    { icon: <Smartphone />, title: 'Report Issues', desc: 'Easily submit issues from any device.' },
-    { icon: <Camera />, title: 'Upload Multiple Images', desc: 'Attach photos as visual proof.' },
-    { icon: <MapPin />, title: 'GPS Location', desc: 'Pinpoint exact location automatically.' },
-    { icon: <Activity />, title: 'Track Status', desc: 'Real-time updates on your report.' },
-    { icon: <Bell />, title: 'Notifications', desc: 'Instant alerts on progress.' },
-    { icon: <MessageCircle />, title: 'Comment', desc: 'Communicate directly with authorities.' },
-  ];
-
-  const adminFeatures = [
-    { icon: <BarChart3 />, title: 'Dashboard Analytics', desc: 'Comprehensive data and insights.' },
-    { icon: <CheckCircle2 />, title: 'Issue Verification', desc: 'Filter and approve valid reports.' },
-    { icon: <Users />, title: 'Staff Assignment', desc: 'Smart routing to the right team.' },
-    { icon: <Settings />, title: 'Category Management', desc: 'Customize issue types.' },
-  ];
-
-  const staffFeatures = [
-    { icon: <ClipboardList />, title: 'Assigned Tasks', desc: 'Clear view of daily responsibilities.' },
-    { icon: <Activity />, title: 'Progress Updates', desc: 'Update status with a single tap.' },
-    { icon: <Camera />, title: 'Upload Work Photos', desc: 'Proof of resolution.' },
-  ];
-
-  const renderFeatureList = (title, features, colorClass, bgClass) => (
-    <div className="glass p-8 rounded-3xl border border-white/50 h-full">
-      <h3 className={`text-2xl font-bold mb-8 ${colorClass}`}>{title}</h3>
-      <div className="space-y-6">
-        {features.map((f, i) => (
-          <div key={i} className="flex gap-4">
-            <div className={`shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${bgClass} ${colorClass}`}>
-              {f.icon}
-            </div>
-            <div>
-              <h4 className="font-semibold text-gray-900">{f.title}</h4>
-              <p className="text-sm text-gray-600 mt-1">{f.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-
   return (
-    <section id="features" className="py-24 relative overflow-hidden bg-white">
-      <div className="absolute top-0 w-full h-full bg-gradient-to-b from-gray-50/50 to-white -z-10" />
-      
+    <section id="roles" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-primary font-semibold tracking-wide uppercase text-sm mb-3">Features</h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-            Everything you need to manage civic issues
-          </h3>
-        </div>
+        {/* Section Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6">
+            Role Overview
+          </span>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight mb-4">
+            Three Roles, One Ecosystem
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Every participant has a defined role with powerful tools
+          </p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            {renderFeatureList('Citizen Features', citizenFeatures, 'text-blue-600', 'bg-blue-50')}
-          </motion.div>
-          
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-            {renderFeatureList('Admin Features', adminFeatures, 'text-primary', 'bg-primary/10')}
-          </motion.div>
-          
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
-            {renderFeatureList('Staff Features', staffFeatures, 'text-emerald-600', 'bg-emerald-50')}
-          </motion.div>
-        </div>
+        {/* Role Cards Grid */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {roles.map((role) => {
+            const IconComponent = role.icon;
+
+            return (
+              <motion.div
+                key={role.title}
+                variants={cardVariants}
+                className={`relative rounded-3xl border border-gray-100 bg-white/80 backdrop-blur-lg shadow-sm 
+                  hover:shadow-xl transition-shadow duration-300 overflow-hidden
+                  border-t-4 ${role.borderColor}`}
+              >
+                {/* Card Header */}
+                <div className={`${role.headerBg} px-6 pt-8 pb-6`}>
+                  <div className="flex items-center gap-4">
+                    <div
+                      className={`w-14 h-14 rounded-2xl ${role.iconBg} flex items-center justify-center`}
+                    >
+                      <IconComponent className={`w-7 h-7 ${role.iconColor}`} />
+                    </div>
+                    <div>
+                      <span
+                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${role.badgeBg} ${role.badgeText}`}
+                      >
+                        {role.title}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Feature List */}
+                <motion.ul
+                  className="px-6 py-6 space-y-4"
+                  variants={{
+                    hidden: {},
+                    visible: {
+                      transition: { staggerChildren: 0.08, delayChildren: 0.2 },
+                    },
+                  }}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  {role.features.map((feature) => (
+                    <motion.li
+                      key={feature}
+                      variants={featureItemVariants}
+                      className="flex items-start gap-3"
+                    >
+                      <span
+                        className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-full ${role.iconBg} flex items-center justify-center`}
+                      >
+                        <Check
+                          className={`w-3 h-3 ${role.checkColor}`}
+                          strokeWidth={3}
+                        />
+                      </span>
+                      <span className="text-gray-700 text-sm leading-relaxed">
+                        {feature}
+                      </span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );
 };
-
-// Temp workaround for missing lucide icon in this file scope if not exported above
-function Activity(props) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-    </svg>
-  );
-}
 
 export default Features;

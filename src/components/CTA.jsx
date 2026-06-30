@@ -1,38 +1,95 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 const CTA = () => {
   return (
-    <section className="py-24 relative overflow-hidden bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div 
+    <section className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-primary to-secondary rounded-[3rem] p-12 md:p-20 text-center text-white relative overflow-hidden shadow-2xl"
+          transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
+          className="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-primary to-secondary px-6 py-20 sm:px-12 md:px-20 md:py-28"
         >
-          {/* Decorative shapes */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl -mr-64 -mt-64 pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl -ml-64 -mb-64 pointer-events-none"></div>
-          
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight relative z-10">
-            Ready to Make Your <br className="hidden md:block" />
-            Community Better?
-          </h2>
-          <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto relative z-10">
-            Join thousands of organizations and citizens who are already using CiviSence to maintain their environments efficiently.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 relative z-10">
-            <a href="https://civisence.web.app/register" className="w-full sm:w-auto px-8 py-4 bg-white text-primary hover:bg-gray-50 rounded-xl font-bold transition-all shadow-lg text-lg inline-block text-center">
-              Get Started
-            </a>
-            <button className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-sm rounded-xl font-bold transition-all text-lg">
-              Register Organization
-            </button>
-            <button className="w-full sm:w-auto px-8 py-4 bg-transparent hover:bg-white/5 border border-transparent rounded-xl font-medium transition-all text-lg underline underline-offset-4">
-              Book Demo
-            </button>
+          {/* Decorative circles */}
+          <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+          <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-64 w-64 rounded-full bg-white/5 blur-2xl" />
+
+          {/* Content */}
+          <div className="relative z-10 flex flex-col items-center text-center">
+            <motion.span
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 text-white font-medium text-sm mb-8 backdrop-blur-sm border border-white/20"
+            >
+              <Sparkles className="w-4 h-4" />
+              Get Started Today
+            </motion.span>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight max-w-3xl"
+            >
+              Ready to Transform Your Community?
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="mt-6 text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed"
+            >
+              Whether you are an individual citizen or represent an organization, CiviSence empowers you to make real change.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="mt-10 flex flex-col sm:flex-row items-center gap-4"
+            >
+              <a
+                href="https://civisence.web.app/register"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-white text-primary font-semibold text-base shadow-lg hover:bg-gray-50 transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5"
+              >
+                Sign Up as Individual
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+
+              <a
+                href="https://civisence.web.app/register"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-white/10 text-white font-semibold text-base border border-white/30 backdrop-blur hover:bg-white/20 transition-all duration-300 hover:-translate-y-0.5"
+              >
+                Register Your Organization
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+            </motion.div>
+
+            {/* Trust text */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="mt-8 text-sm text-white/60"
+            >
+              Free to use&nbsp; •&nbsp; No credit card required&nbsp; •&nbsp; Set up in minutes
+            </motion.p>
           </div>
         </motion.div>
       </div>

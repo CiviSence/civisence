@@ -1,95 +1,99 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { UserPlus, Globe, Building2, FileEdit, Activity, CheckCircle } from 'lucide-react';
+import { Building, Settings, UserPlus, FileEdit, ClipboardCheck, Wrench, ThumbsUp } from 'lucide-react';
 
 const steps = [
   {
     id: 1,
-    title: 'Sign Up',
-    desc: 'Create your free account in seconds',
-    icon: UserPlus,
-    color: 'blue',
-  },
-  {
-    id: 2,
-    title: 'Report Global Issues',
-    desc: 'Report civic problems visible to the entire community',
-    icon: Globe,
-    color: 'indigo',
-  },
-  {
-    id: 3,
-    title: 'Join Organizations',
-    desc: 'Connect with your college, society, office, or community',
-    icon: Building2,
+    title: 'Register Organization',
+    desc: 'Sign up and create your organization on CiviSence',
+    icon: Building,
     color: 'purple',
   },
   {
+    id: 2,
+    title: 'Set Up Workspace',
+    desc: 'Configure your private workspace with custom settings',
+    icon: Settings,
+    color: 'violet',
+  },
+  {
+    id: 3,
+    title: 'Invite Members',
+    desc: 'Share invitation links for users, admins, and staff',
+    icon: UserPlus,
+    color: 'indigo',
+  },
+  {
     id: 4,
-    title: 'Report Org Issues',
-    desc: 'Raise issues specific to your organization, visible only to members',
+    title: 'Members Report Issues',
+    desc: 'Organization members raise issues within the workspace',
     icon: FileEdit,
-    color: 'fuchsia',
+    color: 'blue',
   },
   {
     id: 5,
-    title: 'Track Progress',
-    desc: 'Follow every issue from report to resolution in real-time',
-    icon: Activity,
-    color: 'emerald',
+    title: 'Admins Verify & Assign',
+    desc: 'Admins review reports and assign them to the right staff',
+    icon: ClipboardCheck,
+    color: 'amber',
   },
   {
     id: 6,
-    title: 'Verify & Feedback',
-    desc: 'Confirm the fix and rate the resolution quality',
-    icon: CheckCircle,
+    title: 'Staff Resolve Issues',
+    desc: 'Staff update progress and upload resolution proof',
+    icon: Wrench,
+    color: 'emerald',
+  },
+  {
+    id: 7,
+    title: 'Users Verify Fix',
+    desc: 'Members receive notifications, verify the fix, and provide feedback',
+    icon: ThumbsUp,
     color: 'green',
   },
 ];
 
 const colorMap = {
-  blue: {
-    bg: 'bg-blue-50',
-    text: 'text-blue-600',
-    border: 'border-blue-200',
-    ring: 'ring-blue-100',
-    gradientFrom: 'from-blue-500',
-    dot: 'bg-blue-500',
-    shadow: 'shadow-blue-100',
+  purple: {
+    bg: 'bg-purple-50',
+    text: 'text-purple-600',
+    border: 'border-purple-200',
+    dot: 'bg-purple-500',
+    shadow: 'shadow-purple-100',
+  },
+  violet: {
+    bg: 'bg-violet-50',
+    text: 'text-violet-600',
+    border: 'border-violet-200',
+    dot: 'bg-violet-500',
+    shadow: 'shadow-violet-100',
   },
   indigo: {
     bg: 'bg-indigo-50',
     text: 'text-indigo-600',
     border: 'border-indigo-200',
-    ring: 'ring-indigo-100',
-    gradientFrom: 'from-indigo-500',
     dot: 'bg-indigo-500',
     shadow: 'shadow-indigo-100',
   },
-  purple: {
-    bg: 'bg-purple-50',
-    text: 'text-purple-600',
-    border: 'border-purple-200',
-    ring: 'ring-purple-100',
-    gradientFrom: 'from-purple-500',
-    dot: 'bg-purple-500',
-    shadow: 'shadow-purple-100',
+  blue: {
+    bg: 'bg-blue-50',
+    text: 'text-blue-600',
+    border: 'border-blue-200',
+    dot: 'bg-blue-500',
+    shadow: 'shadow-blue-100',
   },
-  fuchsia: {
-    bg: 'bg-fuchsia-50',
-    text: 'text-fuchsia-600',
-    border: 'border-fuchsia-200',
-    ring: 'ring-fuchsia-100',
-    gradientFrom: 'from-fuchsia-500',
-    dot: 'bg-fuchsia-500',
-    shadow: 'shadow-fuchsia-100',
+  amber: {
+    bg: 'bg-amber-50',
+    text: 'text-amber-600',
+    border: 'border-amber-200',
+    dot: 'bg-amber-500',
+    shadow: 'shadow-amber-100',
   },
   emerald: {
     bg: 'bg-emerald-50',
     text: 'text-emerald-600',
     border: 'border-emerald-200',
-    ring: 'ring-emerald-100',
-    gradientFrom: 'from-emerald-500',
     dot: 'bg-emerald-500',
     shadow: 'shadow-emerald-100',
   },
@@ -97,20 +101,18 @@ const colorMap = {
     bg: 'bg-green-50',
     text: 'text-green-600',
     border: 'border-green-200',
-    ring: 'ring-green-100',
-    gradientFrom: 'from-green-500',
     dot: 'bg-green-500',
     shadow: 'shadow-green-100',
   },
 };
 
-const HowItWorks = () => {
+const HowItWorksOrg = () => {
   return (
-    <section id="how-it-works" className="py-24 bg-white relative overflow-hidden">
+    <section id="for-organizations" className="py-24 bg-gray-50 relative overflow-hidden">
       {/* Subtle background decoration */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute top-20 right-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-40" />
-        <div className="absolute bottom-20 left-0 w-96 h-96 bg-green-50 rounded-full blur-3xl opacity-40" />
+        <div className="absolute top-20 left-0 w-96 h-96 bg-purple-50 rounded-full blur-3xl opacity-50" />
+        <div className="absolute bottom-20 right-0 w-96 h-96 bg-emerald-50 rounded-full blur-3xl opacity-50" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -122,18 +124,18 @@ const HowItWorks = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6">
-            <Activity className="w-4 h-4" />
-            Individual Workflow
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-medium text-sm mb-6">
+            <Building className="w-4 h-4" />
+            Organization Workflow
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight mb-6">
             How It Works —{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-emerald-500 bg-clip-text text-transparent">
-              For Individuals
+            <span className="bg-gradient-to-r from-purple-600 to-emerald-500 bg-clip-text text-transparent">
+              For Organizations
             </span>
           </h2>
           <p className="text-lg text-gray-600">
-            Your journey from signing up to resolving civic issues
+            From registration to resolution, the complete workflow
           </p>
         </motion.div>
 
@@ -141,12 +143,12 @@ const HowItWorks = () => {
         <div className="relative max-w-5xl mx-auto">
           {/* Central vertical gradient line — desktop */}
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 -translate-x-1/2 rounded-full">
-            <div className="w-full h-full bg-gradient-to-b from-blue-400 via-purple-400 via-fuchsia-400 to-green-400 rounded-full opacity-30" />
+            <div className="w-full h-full bg-gradient-to-b from-purple-400 via-indigo-400 via-amber-300 to-green-400 rounded-full opacity-30" />
           </div>
 
           {/* Central vertical gradient line — mobile */}
           <div className="md:hidden absolute left-6 top-0 bottom-0 w-0.5 rounded-full">
-            <div className="w-full h-full bg-gradient-to-b from-blue-400 via-purple-400 to-green-400 rounded-full opacity-30" />
+            <div className="w-full h-full bg-gradient-to-b from-purple-400 via-indigo-400 to-green-400 rounded-full opacity-30" />
           </div>
 
           <div className="relative space-y-8 md:space-y-0">
@@ -173,6 +175,15 @@ const HowItWorks = () => {
                       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                       className={`group p-6 bg-white rounded-2xl border ${colors.border} shadow-sm hover:shadow-xl hover:${colors.shadow} transition-all duration-300 relative`}
                     >
+                      {/* Step label */}
+                      <div
+                        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold mb-4 ${colors.bg} ${colors.text} ${
+                          isLeft ? 'md:ml-auto md:flex' : ''
+                        }`}
+                      >
+                        Step {step.id}
+                      </div>
+
                       {/* Icon */}
                       <div
                         className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${colors.bg} ${colors.text} ${
@@ -183,6 +194,18 @@ const HowItWorks = () => {
                       </div>
                       <h4 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h4>
                       <p className="text-gray-600 text-sm leading-relaxed">{step.desc}</p>
+
+                      {/* Role indicator for steps 4-7 */}
+                      {step.id >= 4 && (
+                        <div className="mt-3 pt-3 border-t border-gray-100">
+                          <span className={`inline-flex items-center gap-1 text-xs font-medium ${colors.text}`}>
+                            {step.id === 4 && '👤 Members'}
+                            {step.id === 5 && '🛡️ Admins'}
+                            {step.id === 6 && '🔧 Staff'}
+                            {step.id === 7 && '👤 Members'}
+                          </span>
+                        </div>
+                      )}
 
                       {/* Connector arrow — desktop only */}
                       <div
@@ -206,7 +229,10 @@ const HowItWorks = () => {
                         {step.id}
                       </motion.div>
                       {/* Pulse ring */}
-                      <div className={`absolute inset-0 w-12 h-12 rounded-full ${colors.dot} opacity-20 animate-ping`} style={{ animationDuration: '3s' }} />
+                      <div
+                        className={`absolute inset-0 w-12 h-12 rounded-full ${colors.dot} opacity-20 animate-ping`}
+                        style={{ animationDuration: '3s' }}
+                      />
                     </div>
                   </div>
 
@@ -222,15 +248,34 @@ const HowItWorks = () => {
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
-            transition={{ type: 'spring', stiffness: 200, delay: 0.8 }}
+            transition={{ type: 'spring', stiffness: 200, delay: 0.9 }}
             className="hidden md:flex items-center justify-center mt-8"
           >
-            <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-green-500 shadow-lg ring-4 ring-white" />
+            <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-500 to-green-500 shadow-lg ring-4 ring-white" />
           </motion.div>
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-16"
+        >
+          <a
+            href="https://civisence.web.app/register"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-full shadow-lg shadow-primary/25 hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5"
+          >
+            <Building className="w-5 h-5" />
+            Register Your Organization
+          </a>
+        </motion.div>
       </div>
     </section>
   );
 };
 
-export default HowItWorks;
+export default HowItWorksOrg;

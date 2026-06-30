@@ -11,19 +11,19 @@ const DashboardPreview = () => {
   ];
 
   return (
-    <section className="py-24 bg-gray-900 relative overflow-hidden">
+    <section id="dashboard" className="py-24 bg-gray-900 relative overflow-hidden">
       {/* Decorative background gradients */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-[100px] -z-0" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/30 rounded-full blur-[100px] -z-0" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-[100px] z-0" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/30 rounded-full blur-[100px] z-0" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-primary-light font-semibold tracking-wide uppercase text-sm mb-3">Platform Preview</h2>
           <h3 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-            Designed for everyone
+            Designed for Every Role
           </h3>
           <p className="text-lg text-gray-400">
-            A beautiful, intuitive interface tailored for citizens, administrators, and field staff.
+            A beautiful, intuitive interface for citizens reporting issues, admins managing organizations, and staff resolving tasks.
           </p>
         </div>
 
@@ -57,7 +57,7 @@ const DashboardPreview = () => {
             </div>
           </div>
           
-          <div className="bg-white rounded-b-2xl overflow-hidden aspect-[16/10] shadow-2xl relative border-b border-x border-gray-700">
+          <div className="bg-white rounded-b-2xl overflow-hidden aspect-16/10 shadow-2xl relative border-b border-x border-gray-700">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -121,7 +121,7 @@ const DashboardPreview = () => {
                 {activeTab === 'staff' && (
                   <div className="flex-1 bg-gray-50 p-4 sm:p-8 flex justify-center">
                     {/* Mobile App Mockup */}
-                    <div className="w-80 bg-white rounded-[2.5rem] shadow-2xl border-[8px] border-gray-900 overflow-hidden relative flex flex-col">
+                    <div className="w-80 bg-white rounded-[2.5rem] shadow-2xl border-8 border-gray-900 overflow-hidden relative flex flex-col">
                       <div className="bg-primary text-white p-6 pt-10 pb-8 rounded-b-3xl">
                         <div className="text-sm opacity-80">Hello, John</div>
                         <div className="text-xl font-bold mt-1">Your Tasks</div>

@@ -15,12 +15,12 @@ const Tracking = () => {
     <section className="py-24 bg-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-primary font-semibold tracking-wide uppercase text-sm mb-3">Transparency</h2>
+          <h2 className="text-primary font-semibold tracking-wide uppercase text-sm mb-3">Transparency Timeline</h2>
           <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
             Real-Time Tracking
           </h3>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Know exactly what's happening with your reported issue at any given moment.
+            Whether it's a global civic issue or an internal organization report, track every step from submission to resolution.
           </p>
         </div>
 
