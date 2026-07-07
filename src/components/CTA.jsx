@@ -61,7 +61,7 @@ const CTA = () => {
               className="mt-10 flex flex-col sm:flex-row items-center gap-4"
             >
               <a
-                href="https://civisence.web.app/register"
+                href="https://civisence-community.vercel.app/register"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-white text-primary font-semibold text-base shadow-lg hover:bg-gray-50 transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-white"
@@ -72,7 +72,7 @@ const CTA = () => {
               </a>
 
               <a
-                href="https://civisence.web.app/register"
+                href="https://civisence-community.vercel.app/register"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-white/10 text-white font-semibold text-base border border-white/30 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 hover:-translate-y-0.5 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-white"

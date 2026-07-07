@@ -35,7 +35,7 @@ const Hero = () => {
             
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-8">
               <a 
-                href="https://civisence.web.app/register" 
+                href="https://civisence-community.vercel.app/register" 
                 className="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary-dark text-white rounded-xl font-medium transition-all shadow-lg shadow-primary/30 flex items-center justify-center gap-2 text-lg focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-primary"
                 aria-label="Get Started Free with CiviSence"
               >

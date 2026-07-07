@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://civisence.web.app/sitemap.xml
+Sitemap: https://civisence-community.vercel.app/sitemap.xml

@@ -266,7 +266,7 @@ const HowItWorksOrg = () => {
           className="text-center mt-16"
         >
           <a
-            href="https://civisence.web.app/register"
+            href="https://civisence-community.vercel.app/register"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-full shadow-lg shadow-primary/25 hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-primary"

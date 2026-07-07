@@ -52,13 +52,13 @@ const Navbar = () => {
 
           <div className="hidden md:flex items-center space-x-4">
             <a 
-              href="https://civisence.web.app/login" 
+              href="https://civisence-community.vercel.app/login" 
               className="text-gray-700 hover:text-primary font-medium text-sm px-4 py-2 rounded-full transition-colors focus:outline-hidden focus:ring-2 focus:ring-primary/50"
             >
               Login
             </a>
             <a 
-              href="https://civisence.web.app/register" 
+              href="https://civisence-community.vercel.app/register" 
               className="bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded-full font-medium transition-colors flex items-center gap-2 shadow-lg shadow-primary/30 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-primary"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -107,7 +107,7 @@ const Navbar = () => {
               ))}
               <li className="pt-2">
                 <a 
-                  href="https://civisence.web.app/login" 
+                  href="https://civisence-community.vercel.app/login" 
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50 text-center"
                 >
                   Login
@@ -115,7 +115,7 @@ const Navbar = () => {
               </li>
               <li className="pt-2">
                 <a 
-                  href="https://civisence.web.app/register" 
+                  href="https://civisence-community.vercel.app/register" 
                   className="w-full bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-xl font-medium flex justify-center items-center gap-2 transition-colors shadow-md"
                 >
                   Get Started Free

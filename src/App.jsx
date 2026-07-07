@@ -35,8 +35,8 @@ function App() {
         '/analytics': '#dashboard',
         '/faq': '#faq',
         '/contact': '#contact',
-        '/login': 'https://civisence.web.app/login',
-        '/signup': 'https://civisence.web.app/register'
+        '/login': 'https://civisence-community.vercel.app/login',
+        '/signup': 'https://civisence-community.vercel.app/register'
       };
 
       if (routeMap[path]) {

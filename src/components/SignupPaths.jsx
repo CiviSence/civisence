@@ -23,7 +23,7 @@ const paths = [
       'Track real-time issue resolution from your interactive dashboard',
     ],
     cta: 'Report Issues',
-    href: 'https://civisence.web.app/register',
+    href: 'https://civisence-community.vercel.app/register',
   },
   {
     id: 'organization',
@@ -45,7 +45,7 @@ const paths = [
       'Access real-time analytics and resolution performance metrics',
     ],
     cta: 'Join Your Organization',
-    href: 'https://civisence.web.app/register',
+    href: 'https://civisence-community.vercel.app/register',
   },
 ];
 

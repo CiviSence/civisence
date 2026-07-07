@@ -140,7 +140,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="https://civisence.web.app/privacy"
+                  href="https://civisence-community.vercel.app/privacy"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors focus:outline-hidden focus:underline"
@@ -150,7 +150,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://civisence.web.app/terms"
+                  href="https://civisence-community.vercel.app/terms"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors focus:outline-hidden focus:underline"
@@ -160,7 +160,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://civisence.web.app/security"
+                  href="https://civisence-community.vercel.app/security"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors focus:outline-hidden focus:underline"
