@@ -1,4 +1,5 @@
 import React, { Suspense, lazy, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import SEO from './components/SEO';
@@ -13,7 +14,7 @@ const Features = lazy(() => import('./components/Features'));
 const DashboardPreview = lazy(() => import('./components/DashboardPreview'));
 const OrgFeatures = lazy(() => import('./components/OrgFeatures'));
 const Tracking = lazy(() => import('./components/Tracking'));
-const Analytics = lazy(() => import('./components/Analytics'));
+const AnalyticsSection = lazy(() => import('./components/Analytics'));
 const WorkflowExample = lazy(() => import('./components/WorkflowExample'));
 const DownloadApp = lazy(() => import('./components/DownloadApp'));
 const Testimonials = lazy(() => import('./components/Testimonials'));
@@ -78,7 +79,7 @@ function App() {
           <DashboardPreview />
           <OrgFeatures />
           <Tracking />
-          <Analytics />
+          <AnalyticsSection />
           <WorkflowExample />
           <DownloadApp />
           <Testimonials />
@@ -88,6 +89,7 @@ function App() {
           <Footer />
         </Suspense>
       </main>
+      <Analytics />
     </div>
   );
 }
