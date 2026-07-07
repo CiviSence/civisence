@@ -6,49 +6,49 @@ const steps = [
   {
     id: 1,
     title: 'Register Organization',
-    desc: 'Sign up and create your organization on CiviSence',
+    desc: 'Sign up your college campus, municipality, or enterprise on CiviSence',
     icon: Building,
     color: 'purple',
   },
   {
     id: 2,
     title: 'Set Up Workspace',
-    desc: 'Configure your private workspace with custom settings',
+    desc: 'Configure your custom Smart City or campus complaint management portal',
     icon: Settings,
     color: 'violet',
   },
   {
     id: 3,
     title: 'Invite Members',
-    desc: 'Share invitation links for users, admins, and staff',
+    desc: 'Share secure invitation links for citizens, students, admins, and field staff',
     icon: UserPlus,
     color: 'indigo',
   },
   {
     id: 4,
     title: 'Members Report Issues',
-    desc: 'Organization members raise issues within the workspace',
+    desc: 'Organization members submit geo-tagged complaints with AI photo proof',
     icon: FileEdit,
     color: 'blue',
   },
   {
     id: 5,
     title: 'Admins Verify & Assign',
-    desc: 'Admins review reports and assign them to the right staff',
+    desc: 'AI routes priorities while admins review reports and assign staff workflows',
     icon: ClipboardCheck,
     color: 'amber',
   },
   {
     id: 6,
     title: 'Staff Resolve Issues',
-    desc: 'Staff update progress and upload resolution proof',
+    desc: 'Staff update resolution SLAs and upload live verification photos',
     icon: Wrench,
     color: 'emerald',
   },
   {
     id: 7,
     title: 'Users Verify Fix',
-    desc: 'Members receive notifications, verify the fix, and provide feedback',
+    desc: 'Citizens receive automated alerts, confirm resolution, and rate feedback',
     icon: ThumbsUp,
     color: 'green',
   },
@@ -108,9 +108,9 @@ const colorMap = {
 
 const HowItWorksOrg = () => {
   return (
-    <section id="for-organizations" className="py-24 bg-gray-50 relative overflow-hidden">
+    <section id="for-organizations" aria-labelledby="for-orgs-heading" className="py-24 bg-gray-50 relative overflow-hidden">
       {/* Subtle background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none" aria-hidden="true">
         <div className="absolute top-20 left-0 w-96 h-96 bg-purple-50 rounded-full blur-3xl opacity-50" />
         <div className="absolute bottom-20 right-0 w-96 h-96 bg-emerald-50 rounded-full blur-3xl opacity-50" />
       </div>
@@ -125,29 +125,29 @@ const HowItWorksOrg = () => {
           className="text-center max-w-3xl mx-auto mb-20"
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-medium text-sm mb-6">
-            <Building className="w-4 h-4" />
-            Organization Workflow
+            <Building className="w-4 h-4" aria-hidden="true" />
+            Organization &amp; Campus Workflow
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight mb-6">
+          <h2 id="for-orgs-heading" className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight mb-6">
             How It Works —{' '}
             <span className="bg-gradient-to-r from-purple-600 to-emerald-500 bg-clip-text text-transparent">
               For Organizations
             </span>
           </h2>
           <p className="text-lg text-gray-600">
-            From registration to resolution, the complete workflow
+            From municipal registration to AI issue resolution, the complete Smart City workflow
           </p>
         </motion.div>
 
         {/* Timeline */}
         <div className="relative max-w-5xl mx-auto">
           {/* Central vertical gradient line — desktop */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 -translate-x-1/2 rounded-full">
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 -translate-x-1/2 rounded-full" aria-hidden="true">
             <div className="w-full h-full bg-gradient-to-b from-purple-400 via-indigo-400 via-amber-300 to-green-400 rounded-full opacity-30" />
           </div>
 
           {/* Central vertical gradient line — mobile */}
-          <div className="md:hidden absolute left-6 top-0 bottom-0 w-0.5 rounded-full">
+          <div className="md:hidden absolute left-6 top-0 bottom-0 w-0.5 rounded-full" aria-hidden="true">
             <div className="w-full h-full bg-gradient-to-b from-purple-400 via-indigo-400 to-green-400 rounded-full opacity-30" />
           </div>
 
@@ -158,7 +158,7 @@ const HowItWorksOrg = () => {
               const Icon = step.icon;
 
               return (
-                <motion.div
+                <motion.article
                   key={step.id}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -190,19 +190,19 @@ const HowItWorksOrg = () => {
                           isLeft ? 'md:ml-auto' : ''
                         }`}
                       >
-                        <Icon className="w-6 h-6" />
+                        <Icon className="w-6 h-6" aria-hidden="true" />
                       </div>
-                      <h4 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h4>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
                       <p className="text-gray-600 text-sm leading-relaxed">{step.desc}</p>
 
                       {/* Role indicator for steps 4-7 */}
                       {step.id >= 4 && (
                         <div className="mt-3 pt-3 border-t border-gray-100">
                           <span className={`inline-flex items-center gap-1 text-xs font-medium ${colors.text}`}>
-                            {step.id === 4 && '👤 Members'}
-                            {step.id === 5 && '🛡️ Admins'}
-                            {step.id === 6 && '🔧 Staff'}
-                            {step.id === 7 && '👤 Members'}
+                            {step.id === 4 && '👤 Citizens & Members'}
+                            {step.id === 5 && '🛡️ Admins & AI Routing'}
+                            {step.id === 6 && '🔧 Staff Resolution'}
+                            {step.id === 7 && '👤 Citizen Verification'}
                           </span>
                         </div>
                       )}
@@ -212,12 +212,13 @@ const HowItWorksOrg = () => {
                         className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-white border ${colors.border} rotate-45 ${
                           isLeft ? '-right-1.5 border-l-0 border-b-0' : '-left-1.5 border-r-0 border-t-0'
                         }`}
+                        aria-hidden="true"
                       />
                     </motion.div>
                   </div>
 
                   {/* Center node */}
-                  <div className="absolute left-0 md:relative md:left-auto flex items-center justify-center md:w-2/12">
+                  <div className="absolute left-0 md:relative md:left-auto flex items-center justify-center md:w-2/12" aria-hidden="true">
                     <div className="relative z-10">
                       <motion.div
                         initial={{ scale: 0 }}
@@ -237,8 +238,8 @@ const HowItWorksOrg = () => {
                   </div>
 
                   {/* Empty side */}
-                  <div className="hidden md:block md:w-5/12" />
-                </motion.div>
+                  <div className="hidden md:block md:w-5/12" aria-hidden="true" />
+                </motion.article>
               );
             })}
           </div>
@@ -250,6 +251,7 @@ const HowItWorksOrg = () => {
             viewport={{ once: true }}
             transition={{ type: 'spring', stiffness: 200, delay: 0.9 }}
             className="hidden md:flex items-center justify-center mt-8"
+            aria-hidden="true"
           >
             <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-500 to-green-500 shadow-lg ring-4 ring-white" />
           </motion.div>
@@ -267,10 +269,11 @@ const HowItWorksOrg = () => {
             href="https://civisence.web.app/register"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-full shadow-lg shadow-primary/25 hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-full shadow-lg shadow-primary/25 hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+            aria-label="Join Your Organization on CiviSence"
           >
-            <Building className="w-5 h-5" />
-            Register Your Organization
+            <Building className="w-5 h-5" aria-hidden="true" />
+            Join Your Organization
           </a>
         </motion.div>
       </div>

@@ -7,28 +7,28 @@ const testimonials = [
     name: 'Priya Sharma',
     role: 'Student, Delhi University',
     quote:
-      'I joined my college on CiviSence and reported a broken water cooler. It was fixed within 2 days! The tracking feature kept me updated every step of the way.',
+      'I joined my college campus portal on CiviSence and reported a broken water cooler with AI photo detection. It was fixed within 24 hours! Real-time tracking kept me updated every step of the way.',
     avatar: 'https://i.pravatar.cc/150?img=5',
   },
   {
     name: 'Rajesh Patel',
     role: 'President, Green Valley Society',
     quote:
-      'Registering our residential society was seamless. Now all 200+ residents report issues through CiviSence and our maintenance team resolves them efficiently.',
+      'Registering our residential municipality organization was seamless. Now all 200+ citizens report geo-tagged complaints through CiviSence and our SLA dashboard resolves them efficiently.',
     avatar: 'https://i.pravatar.cc/150?img=11',
   },
   {
     name: 'Ananya Gupta',
     role: 'Campus Admin, IIT Patna',
     quote:
-      'As an admin, I can verify reports and assign them to the right staff instantly. The analytics dashboard helps me track our team performance beautifully.',
+      'As an admin, AI routing helps me verify public grievances and assign them to the right maintenance staff instantly. Our campus issue management has never been more transparent.',
     avatar: 'https://i.pravatar.cc/150?img=9',
   },
   {
     name: 'Vikram Singh',
-    role: 'Maintenance Staff, Metro Housing',
+    role: 'Field Technician, Smart City Housing',
     quote:
-      'I receive clear assignments with photos and locations. Updating progress and uploading proof of resolution is incredibly simple.',
+      'I receive clear automated priority assignments with GPS locations and photos. Updating live SLAs and uploading photo proof of resolution is incredibly simple on the mobile app.',
     avatar: 'https://i.pravatar.cc/150?img=12',
   },
 ];
@@ -53,7 +53,7 @@ const cardVariants = {
 
 const Testimonials = () => {
   return (
-    <section className="bg-white py-24">
+    <section id="testimonials" aria-labelledby="testimonials-heading" className="bg-white py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -64,15 +64,14 @@ const Testimonials = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6">
-            <Quote className="w-4 h-4" />
-            Testimonials
+            <Quote className="w-4 h-4" aria-hidden="true" />
+            Citizen &amp; Campus Feedback
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight">
-            Loved by Communities
+          <h2 id="testimonials-heading" className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight">
+            Trusted by Smart Cities &amp; Campuses
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-            Hear from the people who use CiviSence every day to make their
-            communities better.
+            See how municipalities, colleges, and organizations leverage CiviSence for transparent civic issue resolution.
           </p>
         </motion.div>
 
@@ -83,44 +82,50 @@ const Testimonials = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
+          role="list"
+          aria-label="Testimonials"
         >
           {testimonials.map((t) => (
-            <motion.div
+            <motion.article
               key={t.name}
+              role="listitem"
               className="bg-gray-50 rounded-3xl border border-gray-100 p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow duration-300"
               variants={cardVariants}
             >
               {/* Stars */}
-              <div className="flex gap-1 mb-5">
+              <div className="flex gap-1 mb-5" aria-label="5 out of 5 stars rating">
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
                     className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                    aria-hidden="true"
                   />
                 ))}
               </div>
 
               {/* Quote */}
-              <p className="text-gray-700 italic leading-relaxed text-[15px] mb-8 flex-1">
+              <blockquote className="text-gray-700 italic leading-relaxed text-[15px] mb-8 flex-1 m-0">
                 &ldquo;{t.quote}&rdquo;
-              </p>
+              </blockquote>
 
               {/* Author */}
               <div className="flex items-center gap-4">
                 <img
                   src={t.avatar}
-                  alt={t.name}
+                  alt={`${t.name} - ${t.role} using CiviSence`}
+                  width="48"
+                  height="48"
                   className="w-12 h-12 rounded-full object-cover ring-2 ring-primary/20"
                   loading="lazy"
                 />
                 <div>
-                  <p className="font-semibold text-gray-900 text-sm">
+                  <h3 className="font-semibold text-gray-900 text-sm m-0">
                     {t.name}
-                  </p>
-                  <p className="text-gray-500 text-xs">{t.role}</p>
+                  </h3>
+                  <p className="text-gray-500 text-xs m-0">{t.role}</p>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </motion.div>
       </div>

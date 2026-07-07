@@ -12,8 +12,8 @@ import {
 
 const steps = [
   {
-    tag: 'The Problem',
-    description: 'Rahul notices a broken AC in his college library',
+    tag: 'Campus Hazard',
+    description: 'Rahul notices a broken AC and water leak in his university library',
     icon: AlertTriangle,
     color: 'bg-red-50',
     iconColor: 'text-red-500',
@@ -21,8 +21,8 @@ const steps = [
     ringColor: 'ring-red-200',
   },
   {
-    tag: 'Report',
-    description: 'He opens CiviSence and selects his college organization',
+    tag: 'AI Reporting',
+    description: 'He opens CiviSence and selects his college campus portal',
     icon: Smartphone,
     color: 'bg-blue-50',
     iconColor: 'text-blue-500',
@@ -30,8 +30,8 @@ const steps = [
     ringColor: 'ring-blue-200',
   },
   {
-    tag: 'Details',
-    description: 'He submits the issue with a photo and location',
+    tag: 'Geo-Tagging',
+    description: 'He submits the complaint with an AI-detected photo and precise GPS location',
     icon: Camera,
     color: 'bg-indigo-50',
     iconColor: 'text-indigo-500',
@@ -39,8 +39,8 @@ const steps = [
     ringColor: 'ring-indigo-200',
   },
   {
-    tag: 'Admin Action',
-    description: 'The college admin reviews and assigns it to maintenance staff',
+    tag: 'AI Routing',
+    description: 'The admin reviews the automated SLA routing and assigns maintenance staff',
     icon: ClipboardCheck,
     color: 'bg-purple-50',
     iconColor: 'text-purple-500',
@@ -48,8 +48,8 @@ const steps = [
     ringColor: 'ring-purple-200',
   },
   {
-    tag: 'Resolution',
-    description: 'Maintenance staff fixes the AC and uploads proof',
+    tag: 'Fast Resolution',
+    description: 'Maintenance technicians resolve the facility issue and upload live photo proof',
     icon: Wrench,
     color: 'bg-amber-50',
     iconColor: 'text-amber-500',
@@ -57,8 +57,8 @@ const steps = [
     ringColor: 'ring-amber-200',
   },
   {
-    tag: 'Verified!',
-    description: 'Rahul gets notified, verifies the fix, and gives 5 stars',
+    tag: 'Verified Fix',
+    description: 'Rahul receives instant notification, verifies the fix, and awards 5 stars',
     icon: Star,
     color: 'bg-green-50',
     iconColor: 'text-green-500',
@@ -87,7 +87,7 @@ const cardVariants = {
 
 const WorkflowExample = () => {
   return (
-    <section className="bg-white py-24 overflow-hidden">
+    <section id="workflow-example" aria-labelledby="workflow-ex-heading" className="bg-white py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -98,14 +98,14 @@ const WorkflowExample = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6">
-            <Star className="w-4 h-4" />
-            Real-World Scenario
+            <Star className="w-4 h-4" aria-hidden="true" />
+            Campus Issue Management
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight">
-            See It In Action
+          <h2 id="workflow-ex-heading" className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight">
+            See Fast Resolution In Action
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-            A real-world example: How a student resolves a campus issue
+            A real-world scenario: How a university student utilizes geo-tagged reporting for instant campus facility maintenance
           </p>
         </motion.div>
 
@@ -119,6 +119,7 @@ const WorkflowExample = () => {
             viewport={{ once: true }}
             transition={{ duration: 1, ease: 'easeInOut' }}
             style={{ transformOrigin: 'left' }}
+            aria-hidden="true"
           />
 
           {/* Cards — horizontal scroll on mobile, 6-col grid on desktop */}
@@ -128,14 +129,17 @@ const WorkflowExample = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
+            role="list"
+            aria-label="Workflow steps"
           >
             {steps.map((step, index) => {
               const Icon = step.icon;
               return (
                 <React.Fragment key={step.tag}>
-                  <motion.div
+                  <motion.article
                     className="min-w-[240px] lg:min-w-0 snap-center flex flex-col items-center text-center"
                     variants={cardVariants}
+                    role="listitem"
                   >
                     {/* Step number */}
                     <span className="text-xs font-semibold text-gray-400 mb-2 tracking-widest uppercase">
@@ -146,26 +150,26 @@ const WorkflowExample = () => {
                     <div
                       className={`w-16 h-16 rounded-2xl ${step.color} ring-4 ${step.ringColor} flex items-center justify-center mb-4 shadow-sm`}
                     >
-                      <Icon className={`w-7 h-7 ${step.iconColor}`} />
+                      <Icon className={`w-7 h-7 ${step.iconColor}`} aria-hidden="true" />
                     </div>
 
                     {/* Card body */}
-                    <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5 shadow-sm w-full">
+                    <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5 shadow-sm w-full flex-1">
                       {/* Tag badge */}
-                      <span
-                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${step.tagColor} mb-3`}
+                      <h3
+                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${step.tagColor} mb-3 m-0`}
                       >
                         {step.tag}
-                      </span>
+                      </h3>
                       <p className="text-sm text-gray-700 leading-relaxed">
                         {step.description}
                       </p>
                     </div>
-                  </motion.div>
+                  </motion.article>
 
                   {/* Arrow separator between cards — mobile only */}
                   {index < steps.length - 1 && (
-                    <div className="flex lg:hidden items-center justify-center min-w-[24px] shrink-0 self-center pt-6">
+                    <div className="flex lg:hidden items-center justify-center min-w-[24px] shrink-0 self-center pt-6" aria-hidden="true">
                       <ChevronRight className="w-5 h-5 text-gray-300" />
                     </div>
                   )}

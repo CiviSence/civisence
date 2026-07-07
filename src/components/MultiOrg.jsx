@@ -67,15 +67,15 @@ const organizations = [
 const featurePoints = [
   {
     icon: ArrowLeftRight,
-    text: 'Switch instantly between orgs',
+    text: 'Switch instantly between campus and city orgs',
   },
   {
     icon: Layers,
-    text: 'Separate issue feeds per org',
+    text: 'Dedicated issue feeds per community',
   },
   {
     icon: LayoutDashboard,
-    text: 'One unified dashboard',
+    text: 'One unified Issue Resolution Dashboard',
   },
 ];
 
@@ -84,7 +84,7 @@ const MultiOrg = () => {
   const radius = 220;
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section id="organizations-network" aria-labelledby="multi-org-heading" className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -95,15 +95,14 @@ const MultiOrg = () => {
           className="text-center max-w-3xl mx-auto mb-20"
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6">
-            <Layers className="w-4 h-4" />
-            Multi-Organization Support
+            <Layers className="w-4 h-4" aria-hidden="true" />
+            Organization Issue Management
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight mb-6">
-            One Account, Multiple Organizations
+          <h2 id="multi-org-heading" className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight mb-6">
+            One Citizen Account, Multiple Communities
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Like joining multiple Facebook Groups or Discord Servers — seamlessly
-            switch between your organizations
+            Whether managing campus maintenance, residential society repairs, or municipal grievances — seamlessly switch between all your organizations with zero friction.
           </p>
         </motion.div>
 
@@ -115,6 +114,7 @@ const MultiOrg = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative mx-auto mb-20"
           style={{ width: '100%', maxWidth: 600, height: 520 }}
+          aria-hidden="true"
         >
           {/* Dotted circle orbit path */}
           <div
@@ -253,7 +253,7 @@ const MultiOrg = () => {
           {featurePoints.map((point, index) => {
             const Icon = point.icon;
             return (
-              <motion.div
+              <motion.article
                 key={point.text}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -262,12 +262,12 @@ const MultiOrg = () => {
                 className="flex items-center gap-3 bg-gray-50 rounded-2xl px-5 py-4 border border-gray-100"
               >
                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                  <Icon className="w-5 h-5 text-primary" />
+                  <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
                 </div>
-                <span className="text-sm font-semibold text-gray-700">
+                <h3 className="text-sm font-semibold text-gray-700 m-0">
                   {point.text}
-                </span>
-              </motion.div>
+                </h3>
+              </motion.article>
             );
           })}
         </motion.div>

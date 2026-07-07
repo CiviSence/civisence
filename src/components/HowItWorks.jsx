@@ -5,43 +5,43 @@ import { UserPlus, Globe, Building2, FileEdit, Activity, CheckCircle } from 'luc
 const steps = [
   {
     id: 1,
-    title: 'Sign Up',
-    desc: 'Create your free account in seconds',
+    title: 'Sign Up Free',
+    desc: 'Create your citizen or campus user account in seconds with zero friction',
     icon: UserPlus,
     color: 'blue',
   },
   {
     id: 2,
-    title: 'Report Global Issues',
-    desc: 'Report civic problems visible to the entire community',
+    title: 'Report Geo-Tagged Issues',
+    desc: 'Report civic problems with automatic GPS location detection and AI photo support',
     icon: Globe,
     color: 'indigo',
   },
   {
     id: 3,
     title: 'Join Organizations',
-    desc: 'Connect with your college, society, office, or community',
+    desc: 'Connect directly with your college campus, society, municipality, or workplace',
     icon: Building2,
     color: 'purple',
   },
   {
     id: 4,
     title: 'Report Org Issues',
-    desc: 'Raise issues specific to your organization, visible only to members',
+    desc: 'Raise campus hazards or department complaints visible only to authorized personnel',
     icon: FileEdit,
     color: 'fuchsia',
   },
   {
     id: 5,
-    title: 'Track Progress',
-    desc: 'Follow every issue from report to resolution in real-time',
+    title: 'Real-Time Tracking',
+    desc: 'Follow every issue from submission to verification with live progress feeds',
     icon: Activity,
     color: 'emerald',
   },
   {
     id: 6,
     title: 'Verify & Feedback',
-    desc: 'Confirm the fix and rate the resolution quality',
+    desc: 'Confirm the resolution quality and ensure transparent public accountability',
     icon: CheckCircle,
     color: 'green',
   },
@@ -106,9 +106,9 @@ const colorMap = {
 
 const HowItWorks = () => {
   return (
-    <section id="how-it-works" className="py-24 bg-white relative overflow-hidden">
+    <section id="how-it-works" aria-labelledby="how-it-works-heading" className="py-24 bg-white relative overflow-hidden">
       {/* Subtle background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none" aria-hidden="true">
         <div className="absolute top-20 right-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-40" />
         <div className="absolute bottom-20 left-0 w-96 h-96 bg-green-50 rounded-full blur-3xl opacity-40" />
       </div>
@@ -123,29 +123,29 @@ const HowItWorks = () => {
           className="text-center max-w-3xl mx-auto mb-20"
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6">
-            <Activity className="w-4 h-4" />
-            Individual Workflow
+            <Activity className="w-4 h-4" aria-hidden="true" />
+            Citizen &amp; Student Workflow
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight mb-6">
+          <h2 id="how-it-works-heading" className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight mb-6">
             How It Works —{' '}
             <span className="bg-gradient-to-r from-blue-600 to-emerald-500 bg-clip-text text-transparent">
-              For Individuals
+              For Citizens
             </span>
           </h2>
           <p className="text-lg text-gray-600">
-            Your journey from signing up to resolving civic issues
+            Your seamless journey from AI issue reporting to verified civic resolution
           </p>
         </motion.div>
 
         {/* Timeline */}
         <div className="relative max-w-5xl mx-auto">
           {/* Central vertical gradient line — desktop */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 -translate-x-1/2 rounded-full">
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 -translate-x-1/2 rounded-full" aria-hidden="true">
             <div className="w-full h-full bg-gradient-to-b from-blue-400 via-purple-400 via-fuchsia-400 to-green-400 rounded-full opacity-30" />
           </div>
 
           {/* Central vertical gradient line — mobile */}
-          <div className="md:hidden absolute left-6 top-0 bottom-0 w-0.5 rounded-full">
+          <div className="md:hidden absolute left-6 top-0 bottom-0 w-0.5 rounded-full" aria-hidden="true">
             <div className="w-full h-full bg-gradient-to-b from-blue-400 via-purple-400 to-green-400 rounded-full opacity-30" />
           </div>
 
@@ -156,7 +156,7 @@ const HowItWorks = () => {
               const Icon = step.icon;
 
               return (
-                <motion.div
+                <motion.article
                   key={step.id}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -179,9 +179,9 @@ const HowItWorks = () => {
                           isLeft ? 'md:ml-auto' : ''
                         }`}
                       >
-                        <Icon className="w-6 h-6" />
+                        <Icon className="w-6 h-6" aria-hidden="true" />
                       </div>
-                      <h4 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h4>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
                       <p className="text-gray-600 text-sm leading-relaxed">{step.desc}</p>
 
                       {/* Connector arrow — desktop only */}
@@ -189,12 +189,13 @@ const HowItWorks = () => {
                         className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-white border ${colors.border} rotate-45 ${
                           isLeft ? '-right-1.5 border-l-0 border-b-0' : '-left-1.5 border-r-0 border-t-0'
                         }`}
+                        aria-hidden="true"
                       />
                     </motion.div>
                   </div>
 
                   {/* Center node */}
-                  <div className="absolute left-0 md:relative md:left-auto flex items-center justify-center md:w-2/12">
+                  <div className="absolute left-0 md:relative md:left-auto flex items-center justify-center md:w-2/12" aria-hidden="true">
                     <div className="relative z-10">
                       <motion.div
                         initial={{ scale: 0 }}
@@ -211,8 +212,8 @@ const HowItWorks = () => {
                   </div>
 
                   {/* Empty side */}
-                  <div className="hidden md:block md:w-5/12" />
-                </motion.div>
+                  <div className="hidden md:block md:w-5/12" aria-hidden="true" />
+                </motion.article>
               );
             })}
           </div>
@@ -224,6 +225,7 @@ const HowItWorks = () => {
             viewport={{ once: true }}
             transition={{ type: 'spring', stiffness: 200, delay: 0.8 }}
             className="hidden md:flex items-center justify-center mt-8"
+            aria-hidden="true"
           >
             <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-green-500 shadow-lg ring-4 ring-white" />
           </motion.div>

@@ -6,42 +6,42 @@ const faqs = [
   {
     question: 'What is CiviSence?',
     answer:
-      'CiviSence is a complete civic issue management ecosystem. It allows individual users to report public civic issues and join organizations like colleges, residential societies, and offices to manage internal issues through a transparent workflow of reporting, verification, assignment, and resolution.',
+      'CiviSence is an AI-powered civic issue reporting and management platform. It empowers citizens to report geo-tagged public grievances with AI photo verification, and enables municipalities, smart campuses, residential societies, and enterprises to resolve civic complaints through transparent SLA tracking dashboards.',
   },
   {
     question: 'What is the difference between Global and Organization issues?',
     answer:
-      'Global issues are visible to everyone on the platform — these are civic problems like road damage or broken streetlights. Organization issues are private and visible only to members of that specific organization — like a broken AC in your college or a plumbing issue in your residential society.',
+      'Global issues are public municipal grievances visible to everyone on the smart city network — such as potholes, broken streetlights, or sanitation hazards. Organization issues are private and visible only to verified institutional members — such as campus library maintenance, Wi-Fi repairs, or residential society plumbing.',
   },
   {
-    question: 'How do I join an organization?',
+    question: 'How do I join an organization or campus portal?',
     answer:
-      'Organizations share invitation links with their members. Simply click the link, and you will be added to the organization. You can also search for organizations within the app.',
+      'Organizations and municipalities share secure invitation links with their members. Simply click the link on your mobile device or desktop, and you will be added to your institutional workspace instantly. You can also search for verified organizations within the app.',
   },
   {
     question: 'Can I be part of multiple organizations?',
     answer:
-      'Yes! You can join as many organizations as you want — your college, your residential society, your office, etc. You can seamlessly switch between them from your dashboard, just like switching between groups on social media.',
+      'Yes! With one citizen account, you can join multiple organizations — your college campus, residential society, workplace, and local municipality. You can seamlessly switch between their dedicated issue feeds from your dashboard with zero friction.',
   },
   {
-    question: 'How does the organization workflow work?',
+    question: 'How does the automated AI issue resolution workflow work?',
     answer:
-      'An organization registers on CiviSence → creates its workspace → invites members, admins, and staff → members report issues → admins verify and assign to staff → staff resolve and upload proof → members verify the fix and provide feedback.',
+      'A user reports a geo-tagged complaint with photo proof → AI assists in verifying category and priority → admin reviews and assigns the task to field technicians → staff resolve the issue and upload live photo proof → the citizen verifies the fix and awards a rating.',
   },
   {
-    question: 'What roles exist inside an organization?',
+    question: 'What roles exist inside a CiviSence organization?',
     answer:
-      'There are three roles: Users (report issues and verify fixes), Admins (verify reports, assign staff, manage members, view analytics), and Staff (receive assignments, update progress, upload resolution proof).',
+      'There are three specialized roles: Citizens/Users (submit geo-tagged reports and verify resolution), Admins (monitor real-time SLA analytics, verify complaints, and route workflows), and Field Staff (receive mobile assignments, update live SLAs, and upload resolution photos).',
   },
   {
-    question: 'Is my data secure?',
+    question: 'Is my civic reporting data secure?',
     answer:
-      'Absolutely. Organization data is completely private and visible only to its members. We use industry-standard encryption and security practices to protect all user data.',
+      'Absolutely. Organization and campus data is completely private and isolated to verified members. We enforce industry-standard encryption, role-based governance, and open data transparency standards where applicable.',
   },
   {
     question: 'Is CiviSence free to use?',
     answer:
-      'Yes, CiviSence is free for individual users. Organizations can register and manage their communities at no cost during our early access period.',
+      'Yes! CiviSence is 100% free for citizens and students. Campuses, municipalities, and organizations can register and manage their community workflows at no cost during our open early access period.',
   },
 ];
 
@@ -53,7 +53,7 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="py-24 bg-gray-50">
+    <section id="faq" aria-labelledby="faq-heading" className="py-24 bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -64,25 +64,26 @@ const FAQ = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6">
-            <HelpCircle className="w-4 h-4" />
+            <HelpCircle className="w-4 h-4" aria-hidden="true" />
             Got Questions?
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight">
+          <h2 id="faq-heading" className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight">
             Frequently Asked Questions
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-            Everything you need to know about CiviSence and how it works for individuals and organizations.
+            Everything you need to know about AI civic issue reporting, smart campus workflows, and municipal grievance management.
           </p>
         </motion.div>
 
         {/* Accordion */}
-        <div className="space-y-4">
+        <div className="space-y-4" role="list" aria-label="Frequently Asked Questions">
           {faqs.map((faq, index) => {
             const isOpen = activeIndex === index;
 
             return (
-              <motion.div
+              <motion.article
                 key={index}
+                role="listitem"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -96,21 +97,25 @@ const FAQ = () => {
                 {/* Question button */}
                 <button
                   onClick={() => toggle(index)}
-                  className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left cursor-pointer"
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${index}`}
+                  id={`faq-question-${index}`}
+                  className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left cursor-pointer focus:outline-hidden focus:ring-2 focus:ring-inset focus:ring-primary"
                 >
-                  <span
-                    className={`text-base md:text-lg font-semibold transition-colors duration-300 ${
+                  <h3
+                    className={`text-base md:text-lg font-semibold transition-colors duration-300 m-0 ${
                       isOpen ? 'text-primary' : 'text-gray-900'
                     }`}
                   >
                     {faq.question}
-                  </span>
+                  </h3>
                   <span
                     className={`shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 ${
                       isOpen
                         ? 'bg-primary text-white rotate-0'
                         : 'bg-gray-100 text-gray-500 rotate-0'
                     }`}
+                    aria-hidden="true"
                   >
                     {isOpen ? (
                       <Minus className="w-4 h-4" />
@@ -125,6 +130,9 @@ const FAQ = () => {
                   {isOpen && (
                     <motion.div
                       key="answer"
+                      id={`faq-answer-${index}`}
+                      role="region"
+                      aria-labelledby={`faq-question-${index}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -132,15 +140,15 @@ const FAQ = () => {
                       className="overflow-hidden"
                     >
                       <div className="px-6 pb-6 pt-0">
-                        <div className="w-12 h-0.5 bg-primary/20 rounded-full mb-4" />
-                        <p className="text-gray-600 leading-relaxed text-[15px]">
+                        <div className="w-12 h-0.5 bg-primary/20 rounded-full mb-4" aria-hidden="true" />
+                        <p className="text-gray-600 leading-relaxed text-[15px] m-0">
                           {faq.answer}
                         </p>
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </motion.article>
             );
           })}
         </div>

@@ -15,15 +15,15 @@ const roles = [
     badgeBg: 'bg-blue-100',
     badgeText: 'text-blue-700',
     features: [
-      'Report global & org issues',
-      'Join multiple organizations',
-      'Track issue progress in real-time',
-      'Verify resolutions & give feedback',
-      'Receive status notifications',
+      'Report geo-tagged global & campus issues',
+      'Join multiple organizations and municipalities',
+      'Track real-time resolution progress on live feeds',
+      'Verify fixes and rate AI issue resolution quality',
+      'Receive instant status alerts and updates',
     ],
   },
   {
-    title: 'Admin',
+    title: 'Admin Dashboard',
     icon: Shield,
     accent: 'primary',
     headerBg: 'bg-primary/10',
@@ -34,15 +34,15 @@ const roles = [
     badgeBg: 'bg-primary/10',
     badgeText: 'text-primary-dark',
     features: [
-      'Verify & validate reported issues',
-      'Assign issues to appropriate staff',
-      'Manage organization members',
-      'View analytics & performance metrics',
-      'Configure organization settings',
+      'Verify & validate reported grievances with AI support',
+      'Assign tasks to appropriate municipal or campus staff',
+      'Manage organization members and SLA routing',
+      'Monitor real-time analytics & performance metrics',
+      'Configure custom Smart City workspace settings',
     ],
   },
   {
-    title: 'Staff',
+    title: 'Field Staff',
     icon: Wrench,
     accent: 'emerald',
     headerBg: 'bg-emerald-50',
@@ -53,11 +53,11 @@ const roles = [
     badgeBg: 'bg-emerald-100',
     badgeText: 'text-emerald-700',
     features: [
-      'Receive issue assignments',
-      'Update progress with status notes',
-      'Upload resolution proof (photos)',
-      'Mark issues as resolved',
-      'View personal task dashboard',
+      'Receive automated priority issue assignments',
+      'Update live SLAs with detailed status notes',
+      'Upload real-time resolution proof (photos)',
+      'Mark civic complaints as resolved',
+      'Manage personal task workflows on the mobile app',
     ],
   },
 ];
@@ -91,7 +91,7 @@ const featureItemVariants = {
 
 const Features = () => {
   return (
-    <section id="roles" className="py-24 bg-white">
+    <section id="roles" aria-labelledby="roles-heading" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -104,11 +104,11 @@ const Features = () => {
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6">
             Role Overview
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight mb-4">
-            Three Roles, One Ecosystem
+          <h2 id="roles-heading" className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight mb-4">
+            Three Roles, One AI Ecosystem
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Every participant has a defined role with powerful tools
+            Every participant in the Smart City and campus community gets specialized tools designed for transparency and speed
           </p>
         </motion.div>
 
@@ -124,7 +124,7 @@ const Features = () => {
             const IconComponent = role.icon;
 
             return (
-              <motion.div
+              <motion.article
                 key={role.title}
                 variants={cardVariants}
                 className={`relative rounded-3xl border border-gray-100 bg-white/80 backdrop-blur-lg shadow-sm 
@@ -137,14 +137,14 @@ const Features = () => {
                     <div
                       className={`w-14 h-14 rounded-2xl ${role.iconBg} flex items-center justify-center`}
                     >
-                      <IconComponent className={`w-7 h-7 ${role.iconColor}`} />
+                      <IconComponent className={`w-7 h-7 ${role.iconColor}`} aria-hidden="true" />
                     </div>
                     <div>
-                      <span
-                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${role.badgeBg} ${role.badgeText}`}
+                      <h3
+                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${role.badgeBg} ${role.badgeText} m-0`}
                       >
                         {role.title}
-                      </span>
+                      </h3>
                     </div>
                   </div>
                 </div>
@@ -169,7 +169,8 @@ const Features = () => {
                       className="flex items-start gap-3"
                     >
                       <span
-                        className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-full ${role.iconBg} flex items-center justify-center`}
+                        className={`mt-0.5 shrink-0 w-5 h-5 rounded-full ${role.iconBg} flex items-center justify-center`}
+                        aria-hidden="true"
                       >
                         <Check
                           className={`w-3 h-3 ${role.checkColor}`}
@@ -182,7 +183,7 @@ const Features = () => {
                     </motion.li>
                   ))}
                 </motion.ul>
-              </motion.div>
+              </motion.article>
             );
           })}
         </motion.div>

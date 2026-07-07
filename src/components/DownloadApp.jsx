@@ -5,46 +5,50 @@ import Logo from './Logo';
 
 const DownloadApp = () => {
   return (
-    <section id="download" className="py-24 bg-gray-50 relative overflow-hidden border-t border-gray-100">
+    <section id="download" aria-labelledby="download-heading" className="py-24 bg-gray-50 relative overflow-hidden border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-[3rem] p-8 md:p-16 border border-gray-100 shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between">
           
           {/* Abstract background shapes */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-20 -mt-20"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl -ml-20 -mb-20"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-20 -mt-20" aria-hidden="true"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl -ml-20 -mb-20" aria-hidden="true"></div>
 
           <div className="md:w-1/2 relative z-10 text-center md:text-left mb-12 md:mb-0">
             <div className="flex flex-col items-center md:items-start">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 text-green-600 font-medium text-sm mb-6 border border-green-100">
-                <Smartphone size={16} />
+                <Smartphone size={16} aria-hidden="true" />
                 <span>Now Available on Android</span>
               </div>
               <Logo className="w-16 h-16 text-primary mb-6" />
             </div>
             
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-              Take CiviSence <br className="hidden md:block" />
+            <h2 id="download-heading" className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+              Take AI Civic Issue Reporting <br className="hidden md:block" />
               anywhere you go
             </h2>
             <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto md:mx-0">
-              Report issues on the spot, track progress in real-time, and stay connected with your community straight from your mobile device.
+              Submit geo-tagged complaints on the spot with AI photo detection, track live SLA progress, and stay connected with your municipality or campus straight from your mobile device.
             </p>
             
             <a 
               href="https://play.google.com/store/apps/details?id=app.web.civisence.twa&pcampaignid=web_share" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-block transition-transform hover:-translate-y-1"
+              className="inline-block transition-transform hover:-translate-y-1 focus:outline-hidden focus:ring-2 focus:ring-primary rounded-lg"
+              aria-label="Download CiviSence AI Civic Issue Reporting Android App from Google Play Store"
             >
               <img 
                 src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
-                alt="Get it on Google Play" 
-                className="h-16 md:h-20"
+                alt="Get CiviSence AI Civic Issue Reporting app on Google Play Store" 
+                width="180"
+                height="70"
+                loading="lazy"
+                className="h-16 md:h-20 w-auto"
               />
             </a>
           </div>
 
-          <div className="md:w-5/12 relative z-10 flex justify-center">
+          <div className="md:w-5/12 relative z-10 flex justify-center" aria-hidden="true">
              <div className="w-64 h-[500px] bg-white rounded-[2.5rem] shadow-2xl border-[8px] border-gray-900 overflow-hidden relative flex flex-col transform md:rotate-2 hover:rotate-0 transition-transform duration-500">
                 <div className="bg-primary text-white p-6 pt-10 pb-8 rounded-b-3xl">
                   <div className="text-sm opacity-80">Hello, Citizen</div>

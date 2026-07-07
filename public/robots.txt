@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://civisence.web.app/sitemap.xml

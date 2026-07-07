@@ -1,0 +1,24 @@
+{
+  "name": "CiviSence - AI Powered Civic Issue Reporting & Management Platform",
+  "short_name": "CiviSence",
+  "description": "Report, track, manage, and resolve civic issues efficiently with AI, geolocation, analytics, and real-time tracking.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/CSM-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/CSM-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
