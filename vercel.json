@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/(privacy|terms|security|accessibility|cookies|acceptable-use|ai-transparency|childrens-privacy|community-guidelines|contact-support|content-moderation|copyright-ip|data-deletion)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

@@ -23,7 +23,21 @@ const CTA = lazy(() => import('./components/CTA'));
 const Footer = lazy(() => import('./components/Footer'));
 const LegalPage = lazy(() => import('./components/LegalPage'));
 
-const legalRoutes = ['/privacy', '/terms', '/security', '/accessibility', '/cookies'];
+const legalRoutes = [
+  '/privacy',
+  '/terms',
+  '/security',
+  '/accessibility',
+  '/cookies',
+  '/acceptable-use',
+  '/ai-transparency',
+  '/childrens-privacy',
+  '/community-guidelines',
+  '/contact-support',
+  '/content-moderation',
+  '/copyright-ip',
+  '/data-deletion'
+];
 
 function App() {
   const [currentPath, setCurrentPath] = useState(() => window.location.pathname || '/');
