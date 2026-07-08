@@ -66,7 +66,10 @@ export default async function handler(req, res) {
   if (process.env.POSTGRES_URL || process.env.DATABASE_URL) {
     try {
       const connectionString = process.env.POSTGRES_URL || process.env.DATABASE_URL;
-      const pool = new Pool({ connectionString });
+      const pool = new Pool({ 
+        connectionString,
+        ssl: { rejectUnauthorized: false }
+      });
       
       // Auto-create table if missing
       await pool.query(`
