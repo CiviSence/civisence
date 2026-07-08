@@ -1,4 +1,5 @@
 import React, { Suspense, lazy, useEffect, useState } from 'react';
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import SEO from './components/SEO';
@@ -132,6 +133,7 @@ function App() {
           <Footer />
         </Suspense>
       )}
+      <VercelAnalytics />
     </div>
   );
 }
