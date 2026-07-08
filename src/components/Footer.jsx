@@ -3,55 +3,60 @@ import Logo from "./Logo";
 
 const Footer = () => {
   const handleFooterNavigate = (path) => (event) => {
-    if (path.startsWith('/')) {
+    if (path.startsWith("/")) {
       event.preventDefault();
-      window.history.pushState({}, '', path);
-      window.dispatchEvent(new PopStateEvent('popstate'));
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.pushState({}, "", path);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('idle'); // 'idle' | 'submitting' | 'success'
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("idle"); // 'idle' | 'submitting' | 'success'
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
     if (!email) return;
-    setStatus('submitting');
+    setStatus("submitting");
     try {
-      const response = await fetch('/api/subscribe', {
-        method: 'POST',
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ email }),
       });
-      
+
       if (!response.ok) {
         if (response.status === 404) {
-          console.warn('[CiviSence Dev] /api/subscribe returned 404. Simulating database subscription locally.');
-          setStatus('success');
-          setEmail('');
+          console.warn(
+            "[CiviSence Dev] /api/subscribe returned 404. Simulating database subscription locally.",
+          );
+          setStatus("success");
+          setEmail("");
           return;
         }
-        throw new Error('Failed to subscribe');
+        throw new Error("Failed to subscribe");
       }
-      
-      setStatus('success');
-      setEmail('');
+
+      setStatus("success");
+      setEmail("");
     } catch (error) {
-      console.error('Subscription error:', error);
-      setStatus('error');
-      setTimeout(() => setStatus('idle'), 3000);
+      console.error("Subscription error:", error);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 3000);
     }
   };
 
   return (
-    <footer aria-label="Site footer" className="bg-[#09090b] pt-20 pb-10 border-t border-zinc-900">
+    <footer
+      aria-label="Site footer"
+      className="bg-[#09090b] pt-12 sm:pt-20 pb-8 sm:pb-10 border-t border-zinc-900"
+    >
       <h2 className="sr-only">Footer Navigation and Company Information</h2>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-16">
-          <div className="col-span-2 lg:col-span-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-8">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-2">
             <div className="flex items-center gap-2 mb-6">
               <Logo className="w-8 h-8 text-primary" />
               <span className="text-xl font-bold text-white tracking-tight">
@@ -59,43 +64,134 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-zinc-400 text-xs leading-relaxed max-w-sm mb-6 font-medium">
-              The civic issue reporting and smart city management ecosystem designed for transparency, SLA accountability, and fast community resolution.
+              The civic issue reporting and smart city management ecosystem
+              designed for transparency, SLA accountability, and fast community
+              resolution.
             </p>
             <div className="flex space-x-3.5">
-              <a href="https://x.com/CiviSence" target="_blank" rel="noopener noreferrer" aria-label="Follow CiviSence on Twitter / X" className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-zinc-850 hover:text-white transition-colors focus:outline-hidden focus:ring-1 focus:ring-zinc-700">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <a
+                href="https://x.com/CiviSence"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow CiviSence on Twitter / X"
+                className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-zinc-850 hover:text-white transition-colors focus:outline-hidden focus:ring-1 focus:ring-zinc-700"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </a>
-              <a href="https://www.facebook.com/profile.php?id=61590989833058" target="_blank" rel="noopener noreferrer" aria-label="Follow CiviSence on Facebook" className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-zinc-850 hover:text-white transition-colors focus:outline-hidden focus:ring-1 focus:ring-zinc-700">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+              <a
+                href="https://www.facebook.com/profile.php?id=61590989833058"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow CiviSence on Facebook"
+                className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-zinc-850 hover:text-white transition-colors focus:outline-hidden focus:ring-1 focus:ring-zinc-700"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </a>
-              <a href="https://www.instagram.com/civisence" target="_blank" rel="noopener noreferrer" aria-label="Follow CiviSence on Instagram" className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-zinc-850 hover:text-white transition-colors focus:outline-hidden focus:ring-1 focus:ring-zinc-700">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
+              <a
+                href="https://www.instagram.com/civisence"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow CiviSence on Instagram"
+                className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-zinc-850 hover:text-white transition-colors focus:outline-hidden focus:ring-1 focus:ring-zinc-700"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </a>
-              <a href="https://www.linkedin.com/company/civisence" target="_blank" rel="noopener noreferrer" aria-label="Follow CiviSence on LinkedIn" className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-zinc-850 hover:text-white transition-colors focus:outline-hidden focus:ring-1 focus:ring-zinc-700">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd" />
+              <a
+                href="https://www.linkedin.com/company/civisence"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow CiviSence on LinkedIn"
+                className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-zinc-850 hover:text-white transition-colors focus:outline-hidden focus:ring-1 focus:ring-zinc-700"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </a>
-              <a href="https://youtube.com/@civisence" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to CiviSence on YouTube" className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-zinc-850 hover:text-white transition-colors focus:outline-hidden focus:ring-1 focus:ring-zinc-700">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fillRule="evenodd" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" clipRule="evenodd" />
+              <a
+                href="https://youtube.com/@civisence"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Subscribe to CiviSence on YouTube"
+                className="w-9 h-9 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-zinc-850 hover:text-white transition-colors focus:outline-hidden focus:ring-1 focus:ring-zinc-700"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </a>
             </div>
+            <a
+              href="https://play.google.com/store/apps/details?id=app.web.civisence.twa&pcampaignid=web_share"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-2 transition-transform hover:-translate-y-1 ml-0 rounded-lg"
+              aria-label="Download CiviSence AI Civic Issue Reporting Android App from Google Play Store"
+            >
+              <img
+                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                alt="Get CiviSence AI Civic Issue Reporting app on Google Play Store"
+                width="180"
+                height="70"
+                loading="lazy"
+                className="h-16 md:h-20 w-auto"
+              />
+            </a>
           </div>
 
           <div>
-            <h3 className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 mb-4">Product</h3>
+            <h3 className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 mb-4">
+              Product
+            </h3>
             <ul className="space-y-3">
               <li>
                 <a
-                  href="#roles"
+                  href="/#roles"
                   className="text-xs text-zinc-500 hover:text-zinc-100 transition-colors focus:outline-hidden focus:underline"
                 >
                   Features
@@ -103,7 +199,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#dashboard"
+                  href="/#dashboard"
                   className="text-xs text-zinc-500 hover:text-zinc-100 transition-colors focus:outline-hidden focus:underline"
                 >
                   Dashboard
@@ -111,7 +207,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#for-organizations"
+                  href="/#for-organizations"
                   className="text-xs text-zinc-500 hover:text-zinc-100 transition-colors focus:outline-hidden focus:underline"
                 >
                   Organizations
@@ -119,7 +215,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#how-it-works"
+                  href="/#how-it-works"
                   className="text-xs text-zinc-500 hover:text-zinc-100 transition-colors focus:outline-hidden focus:underline"
                 >
                   Citizens
@@ -128,13 +224,24 @@ const Footer = () => {
               <li>
                 <a
                   href="https://play.google.com/store/apps/details?id=app.web.civisence.twa&pcampaignid=web_share"
-                  target="_blank" 
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary hover:text-primary-light transition-colors text-xs font-semibold flex items-center gap-1 mt-2 focus:outline-hidden focus:underline"
                 >
                   Android App
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  <svg
+                    className="w-3.5 h-3.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
                   </svg>
                 </a>
               </li>
@@ -142,11 +249,13 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 mb-4">Company</h3>
+            <h3 className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 mb-4">
+              Company
+            </h3>
             <ul className="space-y-3">
               <li>
                 <a
-                  href="#home"
+                  href="/about"
                   className="text-xs text-zinc-500 hover:text-zinc-100 transition-colors focus:outline-hidden focus:underline"
                 >
                   About Us
@@ -154,7 +263,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#analytics"
+                  href="/#analytics"
                   className="text-xs text-zinc-500 hover:text-zinc-100 transition-colors focus:outline-hidden focus:underline"
                 >
                   Impact
@@ -162,7 +271,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#testimonials"
+                  href="/#testimonials"
                   className="text-xs text-zinc-500 hover:text-zinc-100 transition-colors focus:outline-hidden focus:underline"
                 >
                   Communities
@@ -170,7 +279,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#faq"
+                  href="/#faq"
                   className="text-xs text-zinc-500 hover:text-zinc-100 transition-colors focus:outline-hidden focus:underline"
                 >
                   FAQ &amp; Help
@@ -180,12 +289,14 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 mb-4">Legal &amp; Security</h3>
+            <h3 className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 mb-4">
+              Legal &amp; Security
+            </h3>
             <ul className="space-y-3">
               <li>
                 <a
                   href="/privacy"
-                  onClick={handleFooterNavigate('/privacy')}
+                  onClick={handleFooterNavigate("/privacy")}
                   className="text-xs text-zinc-500 hover:text-zinc-100 transition-colors focus:outline-hidden focus:underline"
                 >
                   Privacy Policy
@@ -194,7 +305,7 @@ const Footer = () => {
               <li>
                 <a
                   href="/terms"
-                  onClick={handleFooterNavigate('/terms')}
+                  onClick={handleFooterNavigate("/terms")}
                   className="text-xs text-zinc-500 hover:text-zinc-100 transition-colors focus:outline-hidden focus:underline"
                 >
                   Terms of Service
@@ -203,7 +314,7 @@ const Footer = () => {
               <li>
                 <a
                   href="/security"
-                  onClick={handleFooterNavigate('/security')}
+                  onClick={handleFooterNavigate("/security")}
                   className="text-xs text-zinc-500 hover:text-zinc-100 transition-colors focus:outline-hidden focus:underline"
                 >
                   Security &amp; Encryption
@@ -212,7 +323,7 @@ const Footer = () => {
               <li>
                 <a
                   href="/accessibility"
-                  onClick={handleFooterNavigate('/accessibility')}
+                  onClick={handleFooterNavigate("/accessibility")}
                   className="text-xs text-zinc-500 hover:text-zinc-100 transition-colors focus:outline-hidden focus:underline"
                 >
                   Accessibility Statement
@@ -221,7 +332,7 @@ const Footer = () => {
               <li>
                 <a
                   href="/cookies"
-                  onClick={handleFooterNavigate('/cookies')}
+                  onClick={handleFooterNavigate("/cookies")}
                   className="text-xs text-zinc-500 hover:text-zinc-100 transition-colors focus:outline-hidden focus:underline"
                 >
                   Cookie Policy
@@ -242,48 +353,80 @@ const Footer = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
               </span>
-              <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">All systems operational</span>
+              <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">
+                All systems operational
+              </span>
             </div>
           </div>
 
-          {status === 'success' && (
+          {status === "success" && (
             <div className="flex items-center gap-2 text-xs font-semibold text-green-400 bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2">
-              <svg className="w-3.5 h-3.5 text-green-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              <svg
+                className="w-3.5 h-3.5 text-green-400 shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={3}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
               </svg>
               <span>Subscribed! Check your inbox.</span>
             </div>
           )}
-          
-          {status === 'error' && (
+
+          {status === "error" && (
             <div className="flex items-center gap-2 text-xs font-semibold text-red-400 bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2">
-              <svg className="w-3.5 h-3.5 text-red-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              <svg
+                className="w-3.5 h-3.5 text-red-400 shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={3}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
               <span>Error. Please try again.</span>
             </div>
           )}
 
-          {status !== 'success' && status !== 'error' && (
-            <form onSubmit={handleSubscribe} className="flex rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800 focus-within:border-zinc-700 transition-colors" aria-label="Newsletter Subscription">
-              <label htmlFor="footer-newsletter-email" className="sr-only">Email address for newsletter</label>
+          {status !== "success" && status !== "error" && (
+            <form
+              onSubmit={handleSubscribe}
+              className="flex rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800 focus-within:border-zinc-700 transition-colors"
+              aria-label="Newsletter Subscription"
+            >
+              <label htmlFor="footer-newsletter-email" className="sr-only">
+                Email address for newsletter
+              </label>
               <input
                 id="footer-newsletter-email"
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder={status === 'submitting' ? "Subscribing..." : "Subscribe to newsletter"}
-                disabled={status === 'submitting'}
+                placeholder={
+                  status === "submitting"
+                    ? "Subscribing..."
+                    : "Subscribe to newsletter"
+                }
+                disabled={status === "submitting"}
                 className="bg-transparent text-xs text-zinc-100 px-3 py-2 outline-hidden w-44 placeholder-zinc-650 focus:outline-hidden disabled:opacity-50"
               />
               <button
                 type="submit"
-                disabled={status === 'submitting'}
+                disabled={status === "submitting"}
                 className="bg-zinc-800 text-zinc-200 text-xs font-bold px-4 hover:bg-zinc-750 hover:text-white transition-colors cursor-pointer select-none border-l border-zinc-800 disabled:opacity-50 flex items-center justify-center min-w-20"
                 aria-label="Subscribe to newsletter"
               >
-                {status === 'submitting' ? '...' : 'Subscribe'}
+                {status === "submitting" ? "..." : "Subscribe"}
               </button>
             </form>
           )}
