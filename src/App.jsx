@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 import SEO from './components/SEO';
 import Navbar from './components/Navbar';
@@ -7,12 +7,18 @@ import Navbar from './components/Navbar';
 // Pages
 import HomePage from './pages/HomePage';
 
-// Lazy-loaded pages
+// Lazy-loaded portal pages
 const LoginPortalPage = lazy(() => import('./pages/LoginPortalPage'));
 const SignupPortalPage = lazy(() => import('./pages/SignupPortalPage'));
-const LegalPage = lazy(() => import('./components/LegalPage'));
 
-// Lazy-loaded footer for legal pages
+// Lazy-loaded standalone section pages
+const FeaturesPage = lazy(() => import('./pages/FeaturesPage'));
+const OrganizationsPage = lazy(() => import('./pages/OrganizationsPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const FAQPage = lazy(() => import('./pages/FAQPage'));
+
+// Lazy-loaded legal + footer
+const LegalPage = lazy(() => import('./components/LegalPage'));
 const Footer = lazy(() => import('./components/Footer'));
 
 const legalRoutes = [
@@ -31,18 +37,16 @@ const legalRoutes = [
   '/data-deletion',
 ];
 
-// Wrapper for legal pages (includes Navbar + Footer)
-const LegalPageWrapper = ({ path }) => (
+// ─── Layout wrappers ────────────────────────────────────────────────────────
+
+// Standard page layout: Navbar + content + Footer
+const PageLayout = ({ children, seoTitle, seoDescription }) => (
   <>
-    <SEO
-      title="CiviSence | Legal Documentation"
-      description="Review the CiviSence privacy, security, accessibility, terms, and cookie policies."
-      canonical={`https://civisence.in${path}`}
-    />
+    {seoTitle && <SEO title={seoTitle} description={seoDescription} />}
     <Navbar />
     <main id="main-content" aria-label="Main Content">
-      <Suspense fallback={<div className="py-24 flex justify-center items-center text-gray-400" aria-live="polite">Loading legal content...</div>}>
-        <LegalPage currentPath={path} />
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-gray-400">Loading...</div>}>
+        {children}
       </Suspense>
     </main>
     <Suspense fallback={null}>
@@ -51,19 +55,33 @@ const LegalPageWrapper = ({ path }) => (
   </>
 );
 
-// Handles routes that should scroll to a section on the homepage
-const ScrollRedirect = ({ hash }) => {
+// Legal page layout
+const LegalPageWrapper = ({ path }) => (
+  <PageLayout
+    seoTitle="CiviSence | Legal Documentation"
+    seoDescription="Review the CiviSence privacy, security, accessibility, terms, and cookie policies."
+  >
+    <LegalPage currentPath={path} />
+  </PageLayout>
+);
+
+// ─── Scroll-to-top on route change ──────────────────────────────────────────
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
   useEffect(() => {
-    window.location.replace(`/${hash}`);
-  }, [hash]);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [pathname]);
   return null;
 };
 
+// ─── App ────────────────────────────────────────────────────────────────────
 function App() {
   return (
     <>
+      <ScrollToTop />
       <Routes>
-        {/* Home */}
+
+        {/* ── Home ── */}
         <Route
           path="/"
           element={
@@ -77,7 +95,7 @@ function App() {
           }
         />
 
-        {/* Login Portal */}
+        {/* ── Auth portals (no extra Navbar — they have their own header) ── */}
         <Route
           path="/login"
           element={
@@ -86,8 +104,6 @@ function App() {
             </Suspense>
           }
         />
-
-        {/* Signup Portal */}
         <Route
           path="/signup"
           element={
@@ -97,25 +113,48 @@ function App() {
           }
         />
 
-        {/* Section-scroll convenience routes */}
-        <Route path="/features" element={<ScrollRedirect hash="#roles" />} />
-        <Route path="/how-it-works" element={<ScrollRedirect hash="#how-it-works" />} />
-        <Route path="/organizations" element={<ScrollRedirect hash="#for-organizations" />} />
-        <Route path="/analytics" element={<ScrollRedirect hash="#dashboard" />} />
-        <Route path="/faq" element={<ScrollRedirect hash="#faq" />} />
-        <Route path="/contact" element={<ScrollRedirect hash="#contact" />} />
+        {/* ── Standalone section pages ── */}
+        <Route
+          path="/features"
+          element={
+            <PageLayout seoTitle="Features | CiviSence" seoDescription="Explore CiviSence features for citizens, staff, and organizations.">
+              <FeaturesPage />
+            </PageLayout>
+          }
+        />
+        <Route
+          path="/organizations"
+          element={
+            <PageLayout seoTitle="For Organizations | CiviSence" seoDescription="CiviSence for municipalities, campuses, and enterprises.">
+              <OrganizationsPage />
+            </PageLayout>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <PageLayout seoTitle="Contact Us | CiviSence" seoDescription="Get in touch with the CiviSence team.">
+              <ContactPage />
+            </PageLayout>
+          }
+        />
+        <Route
+          path="/faq"
+          element={
+            <PageLayout seoTitle="FAQ | CiviSence" seoDescription="Frequently asked questions about CiviSence.">
+              <FAQPage />
+            </PageLayout>
+          }
+        />
 
-        {/* Legal routes */}
+        {/* ── Legal routes ── */}
         {legalRoutes.map((path) => (
-          <Route
-            key={path}
-            path={path}
-            element={<LegalPageWrapper path={path} />}
-          />
+          <Route key={path} path={path} element={<LegalPageWrapper path={path} />} />
         ))}
 
-        {/* Catch-all: redirect to home */}
+        {/* ── Catch-all ── */}
         <Route path="*" element={<Navigate to="/" replace />} />
+
       </Routes>
 
       <VercelAnalytics />
@@ -124,4 +163,3 @@ function App() {
 }
 
 export default App;
-

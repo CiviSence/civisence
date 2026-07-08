@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 const SEO = ({
-  title = "CiviSence |Civic Issue Reporting & Management Platform",
+  title = "CiviSence | Civic Issue Reporting & Management Platform",
   description = "CiviSence helps citizens, campuses, and organizations report, track, and resolve civic issues using AI, geolocation, analytics, and smart workflows.",
   keywords = "Civic Issue Reporting, Campus Issue Management, Complaint Management System, Smart City Platform, Issue Tracking Software, Geo-tagged Reporting, Organization Issue Management, Municipal Complaint System, Public Grievance Platform, Issue Resolution Dashboard",
   canonical = "https://civisence.in/",

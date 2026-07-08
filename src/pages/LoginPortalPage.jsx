@@ -4,6 +4,9 @@ import { motion } from 'framer-motion';
 import { User, Briefcase, Building2, ShieldCheck, ArrowRight, ArrowLeft, Lock } from 'lucide-react';
 import Logo from '../components/Logo';
 
+// In dev, the actual auth app is at civisence.in. The portal links there directly.
+const AUTH_BASE = 'https://civisence.in';
+
 const loginTypes = [
   {
     id: 'user',
@@ -18,7 +21,7 @@ const loginTypes = [
     badgeText: 'text-blue-600',
     borderHover: 'hover:border-blue-300',
     buttonStyle: 'bg-blue-600 hover:bg-blue-700 shadow-blue-600/30',
-    href: 'https://civisence.in/login?role=user',
+    href: `${AUTH_BASE}/login?role=user`,
   },
   {
     id: 'staff',
@@ -33,7 +36,7 @@ const loginTypes = [
     badgeText: 'text-emerald-600',
     borderHover: 'hover:border-emerald-300',
     buttonStyle: 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/30',
-    href: 'https://civisence.in/login?role=staff',
+    href: `${AUTH_BASE}/login?role=staff`,
   },
   {
     id: 'organization',
@@ -48,7 +51,7 @@ const loginTypes = [
     badgeText: 'text-violet-600',
     borderHover: 'hover:border-violet-300',
     buttonStyle: 'bg-violet-600 hover:bg-violet-700 shadow-violet-600/30',
-    href: 'https://civisence.in/login?role=organization',
+    href: `${AUTH_BASE}/login?role=organization`,
   },
   {
     id: 'admin',
@@ -63,7 +66,7 @@ const loginTypes = [
     badgeText: 'text-rose-600',
     borderHover: 'hover:border-rose-300',
     buttonStyle: 'bg-rose-600 hover:bg-rose-700 shadow-rose-600/30',
-    href: 'https://civisence.in/login?role=admin',
+    href: `${AUTH_BASE}/login?role=admin`,
   },
 ];
 
