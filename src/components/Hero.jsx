@@ -16,7 +16,7 @@ const Hero = () => {
     <section
       id="home"
       aria-label="Hero Section"
-      className="min-h-screen relative pb-20 pt-40 lg:pb-32 overflow-hidden bg-linear-to-b from-gray-50 to-white"
+      className="min-h-screen relative pb-20 pt-30 lg:pt-40 lg:pb-32 overflow-hidden bg-linear-to-b from-gray-50 to-white"
     >
       {/* Background decoration */}
       <div
@@ -85,7 +85,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="hidden md:flex flex-1 w-full max-w-lg lg:max-w-none relative"
+            className="hidden lg:flex flex-1 w-full max-w-lg lg:max-w-none relative"
           >
             <div className="relative w-full aspect-square flex items-center justify-center">
               {/* Abstract Platform base */}

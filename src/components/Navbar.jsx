@@ -32,7 +32,7 @@ const Navbar = () => {
 
   return (
     <header className="fixed w-full z-50 transition-all duration-300">
-      <nav aria-label="Main Navigation" className=" px-4 py-2 sm:px-6 lg:px-8">
+      <nav aria-label="Main Navigation" className=" px-4 py-2 sm:px-6 lg:px-8 glass bg-transparent}">
         <div className="flex justify-between items-center">
 
           {/* Logo */}
@@ -48,7 +48,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <ul className={`hidden md:flex items-center space-x-1 lg:space-x-2 px-4 rounded-2xl ${isScrolled ? 'glass py-4 shadow-sm' : 'bg-transparent py-5'}`}>
+          <ul className={`hidden lg:flex items-center space-x-1 lg:space-x-2 px-4 rounded-2xl transition-all ${isScrolled ? 'glasss py-4 shadow-sm' : 'bg-transparent py-5'}`}>
             {navLinks.map((link) => (
               <li key={link.name}>
                 <Link
@@ -66,7 +66,7 @@ const Navbar = () => {
           </ul>
 
           {/* Desktop Auth Buttons */}
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden lg:flex items-center space-x-3">
             <Link
               to="/login"
               className={`text-sm font-medium px-4 py-2 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 ${
@@ -89,7 +89,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="lg:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-gray-600 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-1.5"
@@ -111,7 +111,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t mt-3 overflow-hidden"
+            className="lg:hidden glass border-t mt-3 overflow-hidden"
           >
             <ul className="px-4 pt-2 pb-4 space-y-1">
               {navLinks.map((link) => (
