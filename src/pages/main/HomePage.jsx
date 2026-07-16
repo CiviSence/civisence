@@ -34,9 +34,7 @@ const HomePage = () => {
       <Comparison />
       <Contact />
       <CTA />
-      <Tracking />
       <Testimonials />
-      <FAQ />
       <Footer />
     </div>
   );

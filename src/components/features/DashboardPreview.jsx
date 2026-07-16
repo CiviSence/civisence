@@ -1,32 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import userDashboardImg from "../../assets/dashboard/user-dashboard.png";
-import adminDashboardImg from "../../assets/dashboard/admin-dashboard.png";
-import staffDashboardImg from "../../assets/dashboard/staff-dashboard.png";
+import { Loader2 } from "lucide-react";
+
+const tabs = [
+  {
+    id: "citizen",
+    label: "Citizen View",
+    img: "https://res.cloudinary.com/dkekgrdud/image/upload/v1783856300/Screenshot_2026-07-08_192735_lfkbl7.png",
+    alt: "Citizen Issue Reporting & Tracking Dashboard",
+  },
+  {
+    id: "admin",
+    label: "Admin Dashboard",
+    img: "https://res.cloudinary.com/dkekgrdud/image/upload/v1783856300/Screenshot_2026-07-08_192819_ueyavc.png",
+    alt: "Admin Resolution & SLA Monitoring Dashboard",
+  },
+  {
+    id: "staff",
+    label: "Staff Portal",
+    img: "https://res.cloudinary.com/dkekgrdud/image/upload/v1783856301/Screenshot_2026-07-08_193100_opojqt.png",
+    alt: "Field Staff Resolution Portal",
+  },
+];
 
 const DashboardPreview = () => {
   const [activeTab, setActiveTab] = useState("citizen");
+  const [loadedImages, setLoadedImages] = useState({});
 
-  const tabs = [
-    {
-      id: "citizen",
-      label: "Citizen View",
-      img: "https://res.cloudinary.com/dkekgrdud/image/upload/v1783856300/Screenshot_2026-07-08_192735_lfkbl7.png",
-      alt: "Citizen Issue Reporting & Tracking Dashboard",
-    },
-    {
-      id: "admin",
-      label: "Admin Dashboard",
-      img: "https://res.cloudinary.com/dkekgrdud/image/upload/v1783856300/Screenshot_2026-07-08_192819_ueyavc.png",
-      alt: "Admin Resolution & SLA Monitoring Dashboard",
-    },
-    {
-      id: "staff",
-      label: "Staff Portal",
-      img: "https://res.cloudinary.com/dkekgrdud/image/upload/v1783856301/Screenshot_2026-07-08_193100_opojqt.png",
-      alt: "Field Staff Resolution Portal",
-    },
-  ];
+  useEffect(() => {
+    tabs.forEach((tab) => {
+      const img = new Image();
+      img.src = tab.img;
+      img.onload = () => {
+        setLoadedImages((prev) => ({ ...prev, [tab.id]: true }));
+      };
+    });
+  }, []);
 
   const activeTabData = tabs.find((t) => t.id === activeTab) || tabs[0];
 
@@ -114,7 +123,17 @@ const DashboardPreview = () => {
           </div>
 
           {/* Actual Image Render */}
-          <div className="bg-gray-950 rounded-b-2xl overflow-hidden shadow-2xl relative border-b border-x border-gray-700/80">
+          <div className="bg-gray-950 rounded-b-2xl overflow-hidden shadow-2xl relative border-b border-x border-gray-700/80 aspect-video w-full min-h-[260px] sm:min-h-[420px] lg:min-h-[540px]">
+            {/* Loading Skeleton & Spinner when image is not yet loaded */}
+            {!loadedImages[activeTab] && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900/90 gap-3 z-10 animate-pulse">
+                <Loader2 className="w-8 h-8 text-primary animate-spin" />
+                <p className="text-xs sm:text-sm font-medium text-gray-400">
+                  Loading dashboard preview...
+                </p>
+              </div>
+            )}
+
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -122,13 +141,17 @@ const DashboardPreview = () => {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.99, y: -8 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className="w-full h-full flex items-center justify-center bg-gray-900/50"
+                className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-900/50"
               >
                 <img
                   src={activeTabData.img}
                   alt={activeTabData.alt}
-                  className="w-full h-auto max-h-175 object-cover object-top block"
-                  loading="lazy"
+                  onLoad={() =>
+                    setLoadedImages((prev) => ({ ...prev, [activeTab]: true }))
+                  }
+                  className={`w-full h-full object-cover object-top block transition-opacity duration-500 ${
+                    loadedImages[activeTab] ? "opacity-100" : "opacity-0"
+                  }`}
                 />
               </motion.div>
             </AnimatePresence>
